@@ -88,3 +88,29 @@ network={
 
 Replace «your_ISO-3166-1_two-letter_country_code» with your [ISO Country Code](https://www.iso.org/obp/ui/#search), «your_SSID» with the SSID of your network and «your_PSK» with the corresponding wifi password.
 
+## Connect to the Raspberry Pi [source](https://hackernoon.com/raspberry-pi-headless-install-462ccabd75d0)
+
+Establish an ssh connection to the Raspberry Pi with default credentials:
+
+```
+User: pi
+Password: raspberry
+```
+
+```sh
+ssh pi@raspberrypi
+```
+
+If this does not initialize a connection, find out the IP either by running ```nmap -p 22 «subnet mask»``` on your local subnet or finding the device in the router's DHCP table.
+
+## Secure login and permissions
+
+Now configure the Raspberry Pi via the configuration script.
+
+```sh
+# raspi-config
+```
+
+It is recommended to change the default password.
+
+For further ssh setup instructions visit [Securing SSH Guide](../ssh/secure_setup.md)
