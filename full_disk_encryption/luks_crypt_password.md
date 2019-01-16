@@ -1,4 +1,4 @@
-# LUKS crypt
+# LUKS crypt ([source](https://gist.github.com/naomik/5428370))
 
 In this guide, I'm going to setup a keyfile-encrypted LUKS partition. I will be using a single, max-size partition on a single physical device. The mountpoint can be determined by running `lsblk`.
 
