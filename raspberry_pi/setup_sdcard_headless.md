@@ -105,12 +105,29 @@ If this does not initialize a connection, find out the IP either by running ```n
 
 ## Secure login and permissions
 
-Now configure the Raspberry Pi via the configuration script.
+If needed, configure the Raspberry Pi via the configuration script.
 
 ```sh
 # raspi-config
 ```
 
-It is recommended to change the default password.
+Change the default root password.
+
+```sh
+# sudo passwd root
+```
+
+Now create a new user for ssh access and allow sudo access for the new account. Don't remove sudo access for pi immediately. You can remove it once you have tested sudo with the new user account.
+
+```sh
+# adduser «user»
+# usermod -a -G sudo «user»
+```
+
+If you have sudo access with your new account, remove the default user pi.
+
+```sh
+# userdel pi
+```
 
 For further ssh setup instructions visit [Securing SSH Guide](../ssh/secure_setup.md)
