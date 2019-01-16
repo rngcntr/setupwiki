@@ -103,6 +103,20 @@ ssh pi@raspberrypi
 
 If this does not initialize a connection, find out the IP either by running ```nmap -p 22 «subnet mask»``` on your local subnet or finding the device in the router's DHCP table.
 
+You can now change the host name if you want. Replace ```raspberrypi``` by the new name in the following two files and reboot.
+
+```sh
+# sudo vim /etc/hostname
+# sudo vim /etc/hosts
+# reboot
+```
+
+Remove the message of the day
+
+```sh
+# echo "" > /etc/motd
+```
+
 ## Secure login and permissions
 
 If needed, configure the Raspberry Pi via the configuration script.
@@ -127,7 +141,7 @@ Now create a new user for ssh access and allow sudo access for the new account. 
 If you have sudo access with your new account, remove the default user pi.
 
 ```sh
-# userdel pi
+# deluser -remove-home pi
 ```
 
 For further ssh setup instructions visit [Securing SSH Guide](../ssh/secure_setup.md)
