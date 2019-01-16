@@ -88,7 +88,7 @@ network={
 
 Replace «your_ISO-3166-1_two-letter_country_code» with your [ISO Country Code](https://www.iso.org/obp/ui/#search), «your_SSID» with the SSID of your network and «your_PSK» with the corresponding wifi password.
 
-## Connect to the Raspberry Pi [source](https://hackernoon.com/raspberry-pi-headless-install-462ccabd75d0)
+## Connect to the Raspberry Pi ([source](https://hackernoon.com/raspberry-pi-headless-install-462ccabd75d0))
 
 Establish an ssh connection to the Raspberry Pi with default credentials:
 
