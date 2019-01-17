@@ -106,8 +106,8 @@ If this does not initialize a connection, find out the IP either by running ```n
 You can now change the host name if you want. Replace ```raspberrypi``` by the new name in the following two files and reboot.
 
 ```sh
-# sudo vim /etc/hostname
-# sudo vim /etc/hosts
+# vim /etc/hostname
+# vim /etc/hosts
 # reboot
 ```
 
@@ -128,7 +128,7 @@ If needed, configure the Raspberry Pi via the configuration script.
 Change the default root password.
 
 ```sh
-# sudo passwd root
+# passwd root
 ```
 
 Now create a new user for ssh access and allow sudo access for the new account. Don't remove sudo access for pi immediately. You can remove it once you have tested sudo with the new user account.
