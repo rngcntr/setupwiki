@@ -11,4 +11,5 @@ This is a collection of various setup guides.
 # Raspberry Pi
 
 [Setup for headless systems](raspberry_pi/setup_sdcard_headless.md)
+
 [OpenVPN Server](raspberry_pi/openvpn.md)
