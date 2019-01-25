@@ -19,9 +19,7 @@ Run `lsblk` before and after inserting the SD card into the SD card reader in or
 
 If any partitions on the SD card are currently mounted (check the rightmost column of `lsblk`), unmount all of them.
 
-```sh
-umount /dev/sdX1
-```
+$ umount /dev/sdX1
 
 Write the image to the SD card with `dd`. `if=` specifies the image as the source file and `of=` specifies the SD card as the destination. **Make sure to use the correct device to avoid data loss.** The destination is specified by device name, not by partition name.
 
