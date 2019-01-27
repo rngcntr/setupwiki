@@ -13,3 +13,7 @@ This is a collection of various setup guides.
 [Setup for headless systems](raspberry_pi/setup_sdcard_headless.md)
 
 [OpenVPN Server](raspberry_pi/openvpn.md)
+
+# .Dotfiles
+
+[Dotfile Setup](dotfiles/setup.md)
