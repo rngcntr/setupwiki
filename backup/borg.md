@@ -31,7 +31,34 @@ UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx /mnt/backup    ext4    defaults   0   
 
 Now reboot or manually mount the filesystem.
 
-```
+```sh
 # /mnt/backup
 # mount -a
 ```
+
+## Create a backup user and set it's home directory
+
+Add a user on the server who will have access to borg. Set the home directory to the backup partition.
+
+```sh
+# useradd -m borg
+# passwd borg
+# usermod -d /mnt/backup/borg -m borg
+```
+
+## Allow ssh login as borg user
+
+On each client device, create a new ssh identity for borg and copy the public key to the server.
+
+```sh
+ssh-keygen -t ed25519
+ssh-copy-id -i «path/to/key» borg@«server»
+```
+
+## Create a borg repository
+
+## Backup a single file or directory
+
+## Backup an entire filesystem
+
+## Restore a backup
