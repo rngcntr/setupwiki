@@ -57,8 +57,52 @@ ssh-copy-id -i «path/to/key» borg@«server»
 
 ## Create a borg repository
 
+As `borg` on `«server»`:
+```sh
+mkdir -p ~/repo/«client»
+```
+
+On client:
+
+```sh
+borg init --encryption=repokey borg@«server»:~/repo/«client»
+```
+
+Export the repository key and store it in a safe location (e.g. password safe)
+
+```sh
+borg key export borg@«server»:~/repo/«client» ./borg-key-«client»
+```
+
 ## Backup a single file or directory
+
+```sh
+borg create -s --progress borg@«server»:~/repo/«client»::«archive» /path/to/file
+```
 
 ## Backup an entire filesystem
 
+Locations you want to exclude:
+
+```
+/dev
+/lost+found
+/mnt
+/media
+/proc
+/run
+/sys
+/tmp
+```
+
+```sh
+borg create --progress --verbose --stats --exclude '/dev/*' --exclude '/lost+found/*' --exclude '/mnt/*' --exclude '/media/*' --exclude '/proc/*' --exclude '/run/*' --exclude '/sys/*' --exclude '/tmp/*' borg@«server»:~/repo/«client»::«client»-20190128 /
+```
+
 ## Restore a backup
+
+## Delete an archive
+
+```sh
+borg delete borg@«server»:~/repo/«client»::«archive»
+```
