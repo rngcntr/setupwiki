@@ -77,7 +77,7 @@ borg key export borg@«server»:~/repo/«client» ./borg-key-«client»
 ## Backup a single file or directory
 
 ```sh
-borg create -s --progress borg@«server»:~/repo/«client»::«archive» /path/to/file
+# borg create -s --progress borg@«server»:~/repo/«client»::«archive» /path/to/file
 ```
 
 ## Backup an entire filesystem
@@ -96,7 +96,7 @@ Locations you want to exclude:
 ```
 
 ```sh
-borg create --progress --verbose --stats --exclude '/dev/*' --exclude '/lost+found/*' --exclude '/mnt/*' --exclude '/media/*' --exclude '/proc/*' --exclude '/run/*' --exclude '/sys/*' --exclude '/tmp/*' borg@«server»:~/repo/«client»::«client»-20190128 /
+# borg create --progress --verbose --stats --exclude '/dev/*' --exclude '/lost+found/*' --exclude '/mnt/*' --exclude '/media/*' --exclude '/proc/*' --exclude '/run/*' --exclude '/sys/*' --exclude '/tmp/*' borg@«server»:~/repo/«client»::«client»-20190128 /
 ```
 
 ## Restore a backup
@@ -104,5 +104,5 @@ borg create --progress --verbose --stats --exclude '/dev/*' --exclude '/lost+fou
 ## Delete an archive
 
 ```sh
-borg delete borg@«server»:~/repo/«client»::«archive»
+# borg delete borg@«server»:~/repo/«client»::«archive»
 ```
