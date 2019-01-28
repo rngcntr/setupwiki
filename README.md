@@ -17,3 +17,7 @@ This is a collection of various setup guides.
 # .Dotfiles
 
 [Dotfile Setup](dotfiles/setup.md)
+
+# Backup
+
+[Borg Backup](backup/borg.md)
