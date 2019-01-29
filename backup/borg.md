@@ -120,8 +120,8 @@ Locations you want to exclude:
     --exclude '/run/*'              \
     --exclude '/sys/*'              \
     --exclude '/tmp/*'              \
-    --exclude re:\.cache/           \
-    --exclude re:\.ccache/          \
+    --exclude re:/\\.cache/         \
+    --exclude re:/\\.ccache/        \
     borg@«server»:~/repo/«client»::«client»-«date» /
 ```
 
