@@ -96,7 +96,7 @@ Locations you want to exclude:
 ```
 
 ```sh
-# borg create --progress --verbose --stats --exclude '/dev/*' --exclude '/lost+found/*' --exclude '/mnt/*' --exclude '/media/*' --exclude '/proc/*' --exclude '/run/*' --exclude '/sys/*' --exclude '/tmp/*' borg@«server»:~/repo/«client»::«client»-20190128 /
+# borg create --progress --verbose --stats --exclude-caches --exclude '/dev/*' --exclude '/lost+found/*' --exclude '/mnt/*' --exclude '/media/*' --exclude '/proc/*' --exclude '/run/*' --exclude '/sys/*' --exclude '/tmp/*' borg@«server»:~/repo/«client»::«client»-«date» /
 ```
 
 ## Restore a backup
