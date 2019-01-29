@@ -3,7 +3,7 @@
 ## Create an openvpn user
 
 To avoid conflicts with other users, create a new user for the VPN service and set a password for this user. In my case the user is called «openvpn».
-```sh
+```console
 # adduser «openvpn»
 # passwd «openvpn»
 # sudo usermod -a -G sudo «openvpn»
@@ -14,13 +14,13 @@ To avoid conflicts with other users, create a new user for the VPN service and s
 
 Log in as «openvpn».
 
-```sh
+```console
 su - «openvpn»
 ```
 
 ## Run the PiVPN install script
 
-```sh
+```console
 curl -L install.pivpn.io > pivpn.sh
 chmod +x pivpn.sh
 ```
@@ -43,7 +43,7 @@ Once you are sure the script is not harmful in any way, run the installation scr
 
 To generate a client configuration, use:
 
-```sh
+```console
 pivpn add
 ```
 

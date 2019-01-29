@@ -6,7 +6,7 @@ Step-by-step guide to using borg as a tool for backups across multiple devices. 
 
 Find the device name of your hard drive first using `lsblk` or `parted -l`. The name is in the format `sdX` where `X` is a lowercase letter. Create a new primary partition on this device using `parted`. When asked, confirm with `Yes`.
 
-```sh
+```console
 # parted /dev/sdX/
 (parted) mklabel gpt
 (parted) mkpart primary 1 -1
@@ -15,7 +15,7 @@ Find the device name of your hard drive first using `lsblk` or `parted -l`. The 
 
 Use `mkfs.ext4` to format the partition as ext4. Optionally, add a label by passing `-L` to the command. I use the label `backup`.
 
-```sh
+```console
 # mkfs.ext4 -L backup /dev/sdX1
 ```
 
@@ -31,7 +31,7 @@ UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx /mnt/backup    ext4    defaults   0   
 
 Now reboot or manually mount the filesystem.
 
-```sh
+```console
 # /mnt/backup
 # mount -a
 ```
@@ -40,7 +40,7 @@ Now reboot or manually mount the filesystem.
 
 Add a user on the server who will have access to borg. Set the home directory to the backup partition.
 
-```sh
+```console
 # useradd -m borg
 # passwd borg
 # usermod -d /mnt/backup/borg -m borg
@@ -50,7 +50,7 @@ Add a user on the server who will have access to borg. Set the home directory to
 
 On each client device, create a new ssh identity for borg and copy the public key to the server.
 
-```sh
+```console
 ssh-keygen -t ed25519
 ssh-copy-id -i «path/to/key» borg@«server»
 ```
@@ -74,25 +74,25 @@ command="borg serve --restrict-to-path ~/repo/«client» --append-only" ssh-ed25
 ## Create a borg repository
 
 As `borg` on `«server»`:
-```sh
+```console
 mkdir -p ~/repo/«client»
 ```
 
 On client:
 
-```sh
+```console
 borg init --encryption=repokey borg@«server»:~/repo/«client»
 ```
 
 Export the repository key and store it in a safe location (e.g. password safe)
 
-```sh
+```console
 borg key export borg@«server»:~/repo/«client» ./borg-key-«client»
 ```
 
 ## Backup a single file or directory
 
-```sh
+```console
 # borg create -s --progress borg@«server»:~/repo/«client»::«archive» /path/to/file
 ```
 
@@ -111,7 +111,7 @@ Locations you want to exclude:
 /tmp
 ```
 
-```sh
+```console
 # borg create --progress --verbose --stats --exclude-caches --exclude '/dev/*' \
     --exclude '/lost+found/*'       \
     --exclude '/mnt/*'              \
@@ -129,13 +129,13 @@ Locations you want to exclude:
 
 ## Delete an archive
 
-```sh
+```console
 # borg delete borg@«server»:~/repo/«client»::«archive»
 ```
 
 ## Delete old archives
 
-```sh
+```console
 # borg prune --verbose --stats --progress --list \
     --keep-daily=14                 \
     --keep-weekly=8                 \

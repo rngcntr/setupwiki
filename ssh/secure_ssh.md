@@ -1,6 +1,6 @@
 # TODO
 
-```sh
+```console
 ssh-copy-id -i ~/.ssh/«key» «user»@«hostname»
 ```
 
@@ -12,6 +12,6 @@ ChallengeResponseAuthentication no
 UsePAM no
 ```
 
-```sh
+```console
 # service ssh restart
 ```

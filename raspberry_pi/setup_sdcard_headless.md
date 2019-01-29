@@ -8,7 +8,7 @@ The latest Raspbian image can be downloaded from https://www.raspberrypi.org/dow
 
 Extract the zip file by running the following command with adjusted date:
 
-```sh
+```console
 unzip 2018-11-13-raspbian-stretch-lite.zip
 rm 2018-11-13-raspbian-stretch-lite.zip
 ```
@@ -19,13 +19,13 @@ Run `lsblk` before and after inserting the SD card into the SD card reader in or
 
 If any partitions on the SD card are currently mounted (check the rightmost column of `lsblk`), unmount all of them.
 
-```sh
+```console
 umount /dev/sdX1
 ```
 
 Write the image to the SD card with `dd`. `if=` specifies the image as the source file and `of=` specifies the SD card as the destination. **Make sure to use the correct device to avoid data loss.** The destination is specified by device name, not by partition name.
 
-```sh
+```console
 # dd bs=4M if=2018-11-13-raspbian-stretch-lite.img of=/dev/sdX status=progress conv=fsync
 ```
 If any errors occur, try block size `1M` instead of `4M`
@@ -34,13 +34,13 @@ If any errors occur, try block size `1M` instead of `4M`
 
 The output of the `dd` command shows a number of written records (`xxx+0 records in`). Use this record count to copy the image back from the SD card to your local drive.
 
-```sh
+```console
 # dd bs=4M if=/dev/sdX of=from-sd-card.img status=progress count=xxx
 ```
 
 Truncate the new image to the size of the original image and compare the new image with the original one.
 
-```sh
+```console
 # truncate --reference 2018-11-13-raspbian-stretch-lite.img from-sd-card.img
 diff -s from-sd-card.img 2018-11-13-raspbian-stretch-lite.img
 ```
@@ -49,7 +49,7 @@ diff -s from-sd-card.img 2018-11-13-raspbian-stretch-lite.img
 
 Flush the write cache.
 
-```sh
+```console
 sync
 ```
 
@@ -97,7 +97,7 @@ User: pi
 Password: raspberry
 ```
 
-```sh
+```console
 ssh pi@raspberrypi
 ```
 
@@ -105,7 +105,7 @@ If this does not initialize a connection, find out the IP either by running ```n
 
 You can now change the host name if you want. Replace ```raspberrypi``` by the new name in the following two files and reboot.
 
-```sh
+```console
 # vim /etc/hostname
 # vim /etc/hosts
 # reboot
@@ -113,7 +113,7 @@ You can now change the host name if you want. Replace ```raspberrypi``` by the n
 
 Remove the message of the day
 
-```sh
+```console
 # echo "" > /etc/motd
 ```
 
@@ -121,26 +121,26 @@ Remove the message of the day
 
 If needed, configure the Raspberry Pi via the configuration script.
 
-```sh
+```console
 # raspi-config
 ```
 
 Change the default root password.
 
-```sh
+```console
 # passwd root
 ```
 
 Now create a new user for ssh access and allow sudo access for the new account. Don't remove sudo access for pi immediately. You can remove it once you have tested sudo with the new user account.
 
-```sh
+```console
 # adduser «user»
 # usermod -a -G sudo «user»
 ```
 
 If you have sudo access with your new account, remove the default user pi.
 
-```sh
+```console
 # deluser -remove-home pi
 ```
 
