@@ -55,6 +55,22 @@ ssh-keygen -t ed25519
 ssh-copy-id -i «path/to/key» borg@«server»
 ```
 
+## Restrict borg user access
+
+In case a single machine is compromised, an attacker will have acces to the borg server and will be able to delete all backups and control the server. To avoid this, we can restrict ssh access to only allow the borg command. Therefore, we log in as borg on our server and edit the file `.ssh/authorized_keys`. For each client, find the corresponding line and expand it by specifying `command="..."` as seen below:
+
+```
+command="borg serve --restrict-to-path ~/repo/«client»" ssh-ed25519 «key_fingerprint» «user»@«client»
+```
+
+Note that an attacker is still able to run `borg prune` and thereby delete existing backups. In order to avoid this, we can additionaly specify the `--append-only` flag.
+
+In this case we will not be able to run `borg prune` remotely anymore. To delete old backups, we will need physical access to the machine.
+
+```
+command="borg serve --restrict-to-path ~/repo/«client» --append-only" ssh-ed25519 «key_fingerprint» «user»@«client»
+```
+
 ## Create a borg repository
 
 As `borg` on `«server»`:
@@ -80,7 +96,7 @@ borg key export borg@«server»:~/repo/«client» ./borg-key-«client»
 # borg create -s --progress borg@«server»:~/repo/«client»::«archive» /path/to/file
 ```
 
-## Backup an entire filesystem
+## Backup an entire filesystem ([source](https://thomas-leister.de/server-backups-mit-borg/))
 
 Locations you want to exclude:
 
@@ -96,7 +112,7 @@ Locations you want to exclude:
 ```
 
 ```sh
-# borg create --progress --verbose --stats --exclude-caches --exclude '/dev/*' --exclude '/lost+found/*' --exclude '/mnt/*' --exclude '/media/*' --exclude '/proc/*' --exclude '/run/*' --exclude '/sys/*' --exclude '/tmp/*' borg@«server»:~/repo/«client»::«client»-«date» /
+# borg create --progress --verbose --stats --exclude-caches --exclude '/dev/*' --exclude '/lost+found/*' --exclude '/mnt/*' --exclude '/media/*' --exclude '/proc/*' --exclude '/run/*' --exclude '/sys/*' --exclude '/tmp/*' --exclude re:\.cache/ --exclude re:\.ccache/ borg@«server»:~/repo/«client»::«client»-«date» /
 ```
 
 ## Restore a backup
@@ -105,4 +121,10 @@ Locations you want to exclude:
 
 ```sh
 # borg delete borg@«server»:~/repo/«client»::«archive»
+```
+
+## Delete old archives
+
+```sh
+# borg prune --verbose --stats --progress --list --keep-daily=14 --keep-weekly=8 --keep-monthly=12 --keep-yearly=10 borg@«server»:~/repo/«client»
 ```
