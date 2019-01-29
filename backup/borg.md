@@ -112,7 +112,17 @@ Locations you want to exclude:
 ```
 
 ```sh
-# borg create --progress --verbose --stats --exclude-caches --exclude '/dev/*' --exclude '/lost+found/*' --exclude '/mnt/*' --exclude '/media/*' --exclude '/proc/*' --exclude '/run/*' --exclude '/sys/*' --exclude '/tmp/*' --exclude re:\.cache/ --exclude re:\.ccache/ borg@«server»:~/repo/«client»::«client»-«date» /
+# borg create --progress --verbose --stats --exclude-caches --exclude '/dev/*' \
+    --exclude '/lost+found/*'       \
+    --exclude '/mnt/*'              \
+    --exclude '/media/*'            \
+    --exclude '/proc/*'             \
+    --exclude '/run/*'              \
+    --exclude '/sys/*'              \
+    --exclude '/tmp/*'              \
+    --exclude re:\.cache/           \
+    --exclude re:\.ccache/          \
+    borg@«server»:~/repo/«client»::«client»-«date» /
 ```
 
 ## Restore a backup
@@ -126,5 +136,10 @@ Locations you want to exclude:
 ## Delete old archives
 
 ```sh
-# borg prune --verbose --stats --progress --list --keep-daily=14 --keep-weekly=8 --keep-monthly=12 --keep-yearly=10 borg@«server»:~/repo/«client»
+# borg prune --verbose --stats --progress --list \
+    --keep-daily=14                 \
+    --keep-weekly=8                 \
+    --keep-monthly=12               \
+    --keep-yearly=10                \
+    borg@«server»:~/repo/«client»
 ```
