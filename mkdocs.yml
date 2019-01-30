@@ -6,6 +6,7 @@ theme:
         accent: 'pink'
     logo:
         icon: 'receipt'
+    favicon: 'assets/images/favicon.ico'
 repo_name: 'rngcntr/setupwiki'
 repo_url: 'https://github.com/rngcntr/setupwiki'
 edit_uri: ''
