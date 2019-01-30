@@ -245,8 +245,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." title="SETUP WIKI" class="md-nav__link">
-      SETUP WIKI
+    <a href="../.." title="Setup Wiki" class="md-nav__link">
+      Setup Wiki
     </a>
   </li>
 
@@ -348,19 +348,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Full_Disk_Encryption/luks_crypt_keyfile/" title="Luks crypt keyfile" class="md-nav__link">
-      Luks crypt keyfile
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../Full_Disk_Encryption/luks_crypt_password/" title="LUKS Crypt" class="md-nav__link">
+    <a href="../../Full_Disk_Encryption/luks_crypt/" title="LUKS Crypt" class="md-nav__link">
       LUKS Crypt
     </a>
   </li>
@@ -462,56 +450,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../setup_sdcard_headless/" title="Raspberry Pi Setup Guide" class="md-nav__link">
-      Raspberry Pi Setup Guide
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
-    
-    <label class="md-nav__link" for="nav-6">
-      SSH
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
-        SSH
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../SSH/secure_setup/" title="Secure SSH setup" class="md-nav__link">
-      Secure SSH setup
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../SSH/secure_ssh/" title="TODO" class="md-nav__link">
-      TODO
+    <a href="../setup_sdcard_headless/" title="Raspberry Pi Headless Setup" class="md-nav__link">
+      Raspberry Pi Headless Setup
     </a>
   </li>
 
@@ -579,30 +519,31 @@
               
                 
                 
-                <h1 id="openvpn-on-a-raspberry-pi">OpenVPN on a Raspberry Pi</h1>
-<p>(<a href="https://www.kuketz-blog.de/pivpn-raspberry-pi-mit-openvpn-raspberry-pi-teil3/">source</a>)</p>
-<h2 id="create-an-openvpn-user">Create an openvpn user</h2>
-<p>To avoid conflicts with other users, create a new user for the VPN service and set a password for this user. In my case the user is called «openvpn».</p>
-<pre><code class="console"># adduser «openvpn»
-# passwd «openvpn»
-# sudo usermod -a -G sudo «openvpn»
-# mkdir /home/«openvpn»
-# chown /home/openvpn «openvpn»
-# chgrp /home/openvpn «openvpn»
-</code></pre>
-
+                <h1 id="openvpn-on-a-raspberry-pi">OpenVPN on a Raspberry Pi<a class="headerlink" href="#openvpn-on-a-raspberry-pi" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Source: <a href="https://www.kuketz-blog.de/pivpn-raspberry-pi-mit-openvpn-raspberry-pi-teil3/">www.kuketz-blog.de</a></p>
+</div>
+<h2 id="create-an-openvpn-user">Create an openvpn user<a class="headerlink" href="#create-an-openvpn-user" title="Permanent link">&para;</a></h2>
+<p>To avoid conflicts with other users, create a new user for the VPN service and set a password for this user. In my case the user is called «openvpn».
+<div class="codehilite"><pre><span></span><span class="gp">#</span> adduser «openvpn»
+<span class="gp">#</span> passwd «openvpn»
+<span class="gp">#</span> sudo usermod -a -G sudo «openvpn»
+<span class="gp">#</span> mkdir /home/«openvpn»
+<span class="gp">#</span> chown /home/openvpn «openvpn»
+<span class="gp">#</span> chgrp /home/openvpn «openvpn»
+</pre></div></p>
 <p>Log in as «openvpn».</p>
-<pre><code class="console">su - «openvpn»
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="gp">$</span> su - «openvpn»
+</pre></div>
 
-<h2 id="run-the-pivpn-install-script">Run the PiVPN install script</h2>
-<pre><code class="console">curl -L install.pivpn.io &gt; pivpn.sh
-chmod +x pivpn.sh
-</code></pre>
+<h2 id="run-the-pivpn-install-script">Run the PiVPN install script<a class="headerlink" href="#run-the-pivpn-install-script" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -L install.pivpn.io &gt; pivpn.sh
+<span class="gp">$</span> chmod +x pivpn.sh
+</pre></div>
 
 <p>Once you are sure the script is not harmful in any way, run the installation script.</p>
-<pre><code># ./pivpn.sh
-</code></pre>
+<div class="codehilite"><pre><span></span>$ ./pivpn.sh
+</pre></div>
 
 <ol>
 <li>Confirm the current network settings and make sure the shown IP address (eg. 192.168.2.110) is always assigned to this device by the router.</li>
@@ -613,10 +554,10 @@ chmod +x pivpn.sh
 <li>If you use DNS, enter the domain name.</li>
 <li>Reboot after the installation has finished</li>
 </ol>
-<h2 id="add-clients">Add clients</h2>
+<h2 id="add-clients">Add clients<a class="headerlink" href="#add-clients" title="Permanent link">&para;</a></h2>
 <p>To generate a client configuration, use:</p>
-<pre><code class="console">pivpn add
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="gp">$</span> pivpn add
+</pre></div>
 
 <p>Select a different username and password for each client. Copy the resulting <code>ovpn</code> file to your client device via scp and use it in your OpenVPN client.</p>
                 
@@ -639,7 +580,7 @@ chmod +x pivpn.sh
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../Full_Disk_Encryption/luks_crypt_password/" title="LUKS Crypt" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../Full_Disk_Encryption/luks_crypt/" title="LUKS Crypt" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -654,13 +595,13 @@ chmod +x pivpn.sh
           </a>
         
         
-          <a href="../setup_sdcard_headless/" title="Raspberry Pi Setup Guide" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../setup_sdcard_headless/" title="Raspberry Pi Headless Setup" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Raspberry Pi Setup Guide
+                Raspberry Pi Headless Setup
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

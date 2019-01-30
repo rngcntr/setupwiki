@@ -36,7 +36,7 @@
     
     
       
-        <title>Raspberry Pi Setup Guide - Setup Wiki</title>
+        <title>Raspberry Pi Headless Setup - Setup Wiki</title>
       
     
     
@@ -102,7 +102,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#raspberry-pi-setup-guide" tabindex="1" class="md-skip">
+      <a href="#raspberry-pi-headless-setup" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -128,7 +128,7 @@
                 Setup Wiki
               </span>
               <span class="md-header-nav__topic">
-                Raspberry Pi Setup Guide
+                Raspberry Pi Headless Setup
               </span>
             
           
@@ -245,8 +245,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." title="SETUP WIKI" class="md-nav__link">
-      SETUP WIKI
+    <a href="../.." title="Setup Wiki" class="md-nav__link">
+      Setup Wiki
     </a>
   </li>
 
@@ -348,19 +348,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Full_Disk_Encryption/luks_crypt_keyfile/" title="Luks crypt keyfile" class="md-nav__link">
-      Luks crypt keyfile
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../Full_Disk_Encryption/luks_crypt_password/" title="LUKS Crypt" class="md-nav__link">
+    <a href="../../Full_Disk_Encryption/luks_crypt/" title="LUKS Crypt" class="md-nav__link">
       LUKS Crypt
     </a>
   </li>
@@ -419,11 +407,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Raspberry Pi Setup Guide
+        Raspberry Pi Headless Setup
       </label>
     
-    <a href="./" title="Raspberry Pi Setup Guide" class="md-nav__link md-nav__link--active">
-      Raspberry Pi Setup Guide
+    <a href="./" title="Raspberry Pi Headless Setup" class="md-nav__link md-nav__link--active">
+      Raspberry Pi Headless Setup
     </a>
     
       
@@ -506,54 +494,6 @@
   
 </nav>
     
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
-    
-    <label class="md-nav__link" for="nav-6">
-      SSH
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
-        SSH
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../SSH/secure_setup/" title="Secure SSH setup" class="md-nav__link">
-      Secure SSH setup
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../SSH/secure_ssh/" title="TODO" class="md-nav__link">
-      TODO
-    </a>
   </li>
 
         
@@ -661,57 +601,60 @@
               
                 
                 
-                <h1 id="raspberry-pi-setup-guide">Raspberry Pi Setup Guide</h1>
-<p>(<a href="https://www.raspberrypi.org/documentation/installation/installing-images/linux.md">source</a>)</p>
+                <h1 id="raspberry-pi-headless-setup">Raspberry Pi Headless Setup<a class="headerlink" href="#raspberry-pi-headless-setup" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Source: <a href="https://www.raspberrypi.org/documentation/installation/installing-images/linux.md">www.raspberrypi.org</a></p>
+</div>
 <p>This guide describes the installation of Raspbian on a Raspberry Pi 3B+ as a headless server.</p>
-<h2 id="download-raspbian-image">Download Raspbian Image</h2>
-<p>The latest Raspbian image can be downloaded from https://www.raspberrypi.org/downloads/raspbian/. In this case no desktop environment is needed so we use <strong>Raspbian Stretch Lite</strong>.</p>
+<h2 id="download-raspbian-image">Download Raspbian Image<a class="headerlink" href="#download-raspbian-image" title="Permanent link">&para;</a></h2>
+<p>The latest Raspbian image can be downloaded from <a href="https://www.raspberrypi.org/downloads/raspbian/">https://www.raspberrypi.org/downloads/raspbian/</a>. In this case no desktop environment is needed so we use <strong>Raspbian Stretch Lite</strong>.</p>
 <p>Extract the zip file by running the following command with adjusted date:</p>
-<pre><code class="console">unzip 2018-11-13-raspbian-stretch-lite.zip
-rm 2018-11-13-raspbian-stretch-lite.zip
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="gp">$</span> unzip <span class="m">2018</span>-11-13-raspbian-stretch-lite.zip
+<span class="gp">$</span> rm <span class="m">2018</span>-11-13-raspbian-stretch-lite.zip
+</pre></div>
 
-<h2 id="write-the-image-to-the-sd-card">Write the image to the SD card</h2>
+<h2 id="write-the-image-to-the-sd-card">Write the image to the SD card<a class="headerlink" href="#write-the-image-to-the-sd-card" title="Permanent link">&para;</a></h2>
 <p>Run <code>lsblk</code> before and after inserting the SD card into the SD card reader in order to determine the <code>NAME</code> of the SD card. The device should be listed as <code>sdX</code> where <code>X</code> is a lower-case letter indicating the device.</p>
 <p>If any partitions on the SD card are currently mounted (check the rightmost column of <code>lsblk</code>), unmount all of them.</p>
-<pre><code class="console">umount /dev/sdX1
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="gp">$</span> umount /dev/sdX1
+</pre></div>
 
 <p>Write the image to the SD card with <code>dd</code>. <code>if=</code> specifies the image as the source file and <code>of=</code> specifies the SD card as the destination. <strong>Make sure to use the correct device to avoid data loss.</strong> The destination is specified by device name, not by partition name.</p>
-<pre><code class="console"># dd bs=4M if=2018-11-13-raspbian-stretch-lite.img of=/dev/sdX status=progress conv=fsync
-</code></pre>
-
-<p>If any errors occur, try block size <code>1M</code> instead of <code>4M</code></p>
-<h3 id="optional-checking-whether-the-image-was-written-correctly">Optional: Checking whether the image was written correctly</h3>
+<p><div class="codehilite"><pre><span></span><span class="gp">#</span> dd <span class="nv">bs</span><span class="o">=</span>4M <span class="k">if</span><span class="o">=</span><span class="m">2018</span>-11-13-raspbian-stretch-lite.img <span class="nv">of</span><span class="o">=</span>/dev/sdX <span class="nv">status</span><span class="o">=</span>progress <span class="nv">conv</span><span class="o">=</span>fsync
+</pre></div>
+If any errors occur, try block size <code>1M</code> instead of <code>4M</code></p>
+<h3 id="optional-checking-whether-the-image-was-written-correctly">Optional: Checking whether the image was written correctly<a class="headerlink" href="#optional-checking-whether-the-image-was-written-correctly" title="Permanent link">&para;</a></h3>
 <p>The output of the <code>dd</code> command shows a number of written records (<code>xxx+0 records in</code>). Use this record count to copy the image back from the SD card to your local drive.</p>
-<pre><code class="console"># dd bs=4M if=/dev/sdX of=from-sd-card.img status=progress count=xxx
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="gp">#</span> dd <span class="nv">bs</span><span class="o">=</span>4M <span class="k">if</span><span class="o">=</span>/dev/sdX <span class="nv">of</span><span class="o">=</span>from-sd-card.img <span class="nv">status</span><span class="o">=</span>progress <span class="nv">count</span><span class="o">=</span>xxx
+</pre></div>
 
 <p>Truncate the new image to the size of the original image and compare the new image with the original one.</p>
-<pre><code class="console"># truncate --reference 2018-11-13-raspbian-stretch-lite.img from-sd-card.img
-diff -s from-sd-card.img 2018-11-13-raspbian-stretch-lite.img
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="gp">#</span> truncate --reference <span class="m">2018</span>-11-13-raspbian-stretch-lite.img from-sd-card.img
+<span class="gp">$</span> diff -s from-sd-card.img <span class="m">2018</span>-11-13-raspbian-stretch-lite.img
+</pre></div>
 
-<h2 id="eject-the-sd-card">Eject the SD card</h2>
+<h2 id="eject-the-sd-card">Eject the SD card<a class="headerlink" href="#eject-the-sd-card" title="Permanent link">&para;</a></h2>
 <p>Flush the write cache.</p>
-<pre><code class="console">sync
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="gp">$</span> sync
+</pre></div>
 
 <p>Remove the SD card from the card reader.</p>
-<h2 id="enable-ssh-for-headless-systems">Enable ssh for headless systems</h2>
+<h2 id="enable-ssh-for-headless-systems">Enable ssh for headless systems<a class="headerlink" href="#enable-ssh-for-headless-systems" title="Permanent link">&para;</a></h2>
 <p>Insert the SD card into the card reader. It will be mounted by defalt. Navigate to the boot partition of the SD card and create an empty file named <code>ssh</code>. The mountpoint of the boot partition can be determined via <code>lsblk</code>.</p>
-<pre><code class="ssh">cd /run/media/$USER/boot
+<div class="codehilite"><pre><span></span>cd /run/media/$USER/boot
 touch ssh
-</code></pre>
+</pre></div>
 
-<h2 id="enable-wifi-for-headless-systems">Enable WIFI for headless systems</h2>
-<p>(<a href="https://raspberrypi.stackexchange.com/a/10413">source</a>)</p>
+<h2 id="enable-wifi-for-headless-systems">Enable WIFI for headless systems<a class="headerlink" href="#enable-wifi-for-headless-systems" title="Permanent link">&para;</a></h2>
+<div class="admonition quote">
+<p class="admonition-title">Source: <a href="https://raspberrypi.stackexchange.com/a/10413">raspberrypi.stackexchange.com</a></p>
+</div>
 <p>Insert the SD card into the card reader. It will be mounted by defalt. Navigate to the boot partition of the SD card. The mountpoint of the boot partition can be determined via <code>lsblk</code>.</p>
-<pre><code class="ssh">cd /run/media/$USER/boot
-</code></pre>
+<div class="codehilite"><pre><span></span>$ cd /run/media/$USER/boot
+</pre></div>
 
 <p>Create a file named <code>wpa_supplicant.conf</code> with the following content:</p>
-<pre><code>ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+<div class="codehilite"><pre><span></span>ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
 country=«your_ISO-3166-1_two-letter_country_code»
 
@@ -720,47 +663,49 @@ network={
     psk=&quot;«your_PSK»&quot;
     key_mgmt=WPA-PSK
 }
-</code></pre>
+</pre></div>
 
-<p>Replace «your_ISO-3166-1_two-letter_country_code» with your <a href="https://www.iso.org/obp/ui/#search">ISO Country Code</a>, «your_SSID» with the SSID of your network and «your_PSK» with the corresponding wifi password.</p>
-<h2 id="connect-to-the-raspberry-pi">Connect to the Raspberry Pi</h2>
-<p>(<a href="https://hackernoon.com/raspberry-pi-headless-install-462ccabd75d0">source</a>)</p>
+<p>Replace <code>«your_ISO-3166-1_two-letter_country_code»</code> with your <a href="https://www.iso.org/obp/ui/#search">ISO Country Code</a>, <code>«your_SSID»</code> with the SSID of your network and <code>«your_PSK»</code> with the corresponding wifi password.</p>
+<h2 id="connect-to-the-raspberry-pi">Connect to the Raspberry Pi<a class="headerlink" href="#connect-to-the-raspberry-pi" title="Permanent link">&para;</a></h2>
+<div class="admonition quote">
+<p class="admonition-title">Source: <a href="https://hackernoon.com/raspberry-pi-headless-install-462ccabd75d0">hackernoon.com</a></p>
+</div>
 <p>Establish an ssh connection to the Raspberry Pi with default credentials:</p>
-<pre><code>User: pi
-Password: raspberry
-</code></pre>
+<div class="codehilite"><pre><span></span>    User:  pi
+Password:  raspberry
+</pre></div>
 
-<pre><code class="console">ssh pi@raspberrypi
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="gp">$</span> ssh pi@raspberrypi
+</pre></div>
 
 <p>If this does not initialize a connection, find out the IP either by running <code>nmap -p 22 «subnet mask»</code> on your local subnet or finding the device in the router's DHCP table.</p>
 <p>You can now change the host name if you want. Replace <code>raspberrypi</code> by the new name in the following two files and reboot.</p>
-<pre><code class="console"># vim /etc/hostname
-# vim /etc/hosts
-# reboot
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="gp">#</span> vim /etc/hostname
+<span class="gp">#</span> vim /etc/hosts
+<span class="gp">#</span> reboot
+</pre></div>
 
 <p>Remove the message of the day</p>
-<pre><code class="console"># echo &quot;&quot; &gt; /etc/motd
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="gp">#</span> <span class="nb">echo</span> <span class="s2">&quot;&quot;</span> &gt; /etc/motd
+</pre></div>
 
-<h2 id="secure-login-and-permissions">Secure login and permissions</h2>
+<h2 id="secure-login-and-permissions">Secure login and permissions<a class="headerlink" href="#secure-login-and-permissions" title="Permanent link">&para;</a></h2>
 <p>If needed, configure the Raspberry Pi via the configuration script.</p>
-<pre><code class="console"># raspi-config
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="gp">#</span> raspi-config
+</pre></div>
 
 <p>Change the default root password.</p>
-<pre><code class="console"># passwd root
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="gp">#</span> passwd root
+</pre></div>
 
 <p>Now create a new user for ssh access and allow sudo access for the new account. Don't remove sudo access for pi immediately. You can remove it once you have tested sudo with the new user account.</p>
-<pre><code class="console"># adduser «user»
-# usermod -a -G sudo «user»
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="gp">#</span> adduser «user»
+<span class="gp">#</span> usermod -a -G sudo «user»
+</pre></div>
 
 <p>If you have sudo access with your new account, remove the default user pi.</p>
-<pre><code class="console"># deluser -remove-home pi
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="gp">#</span> deluser -remove-home pi
+</pre></div>
 
 <p>For further ssh setup instructions visit <a href="../ssh/secure_setup.md">Securing SSH Guide</a></p>
                 
@@ -797,20 +742,6 @@ Password: raspberry
             </div>
           </a>
         
-        
-          <a href="../../SSH/secure_setup/" title="Secure SSH setup" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                Secure SSH setup
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
         
       </nav>
     </div>

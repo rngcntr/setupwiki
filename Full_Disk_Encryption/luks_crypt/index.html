@@ -36,7 +36,7 @@
     
     
       
-        <title>Luks crypt keyfile - Setup Wiki</title>
+        <title>LUKS Crypt - Setup Wiki</title>
       
     
     
@@ -128,7 +128,7 @@
                 Setup Wiki
               </span>
               <span class="md-header-nav__topic">
-                Luks crypt keyfile
+                LUKS Crypt
               </span>
             
           
@@ -245,8 +245,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." title="SETUP WIKI" class="md-nav__link">
-      SETUP WIKI
+    <a href="../.." title="Setup Wiki" class="md-nav__link">
+      Setup Wiki
     </a>
   </li>
 
@@ -358,22 +358,162 @@
       
     
     
-    <a href="./" title="Luks crypt keyfile" class="md-nav__link md-nav__link--active">
-      Luks crypt keyfile
-    </a>
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        LUKS Crypt
+      </label>
     
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../luks_crypt_password/" title="LUKS Crypt" class="md-nav__link">
+    <a href="./" title="LUKS Crypt" class="md-nav__link md-nav__link--active">
       LUKS Crypt
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#partition-the-physical-device" title="Partition the physical device" class="md-nav__link">
+    Partition the physical device
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-the-key-file-optional" title="Create the key file (optional)" class="md-nav__link">
+    Create the key file (optional)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-luks-partition" title="Create LUKS partition" class="md-nav__link">
+    Create LUKS partition
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#with-key-file" title="With key file" class="md-nav__link">
+    With key file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-password" title="With password" class="md-nav__link">
+    With password
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialize-the-luks-partition" title="Initialize the LUKS partition" class="md-nav__link">
+    Initialize the LUKS partition
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#with-keyfile" title="With keyfile" class="md-nav__link">
+    With keyfile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-password_1" title="With password" class="md-nav__link">
+    With password
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#size-the-luks-partition" title="Size the LUKS partition" class="md-nav__link">
+    Size the LUKS partition
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#format-the-luks-partition" title="Format the LUKS partition" class="md-nav__link">
+    Format the LUKS partition
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-mount-point" title="Create a mount point" class="md-nav__link">
+    Create a mount point
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mount-the-luks-mapping-device" title="Mount the LUKS mapping device" class="md-nav__link">
+    Mount the LUKS mapping device
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unmount-the-luks-mapping-device" title="Unmount the LUKS mapping device" class="md-nav__link">
+    Unmount the LUKS mapping device
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automountable" title="Automountable" class="md-nav__link">
+    Automountable
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#with-keyfile_1" title="With keyfile" class="md-nav__link">
+    With keyfile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-password_2" title="With password" class="md-nav__link">
+    With password
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -419,56 +559,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Raspberry_Pi/setup_sdcard_headless/" title="Raspberry Pi Setup Guide" class="md-nav__link">
-      Raspberry Pi Setup Guide
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
-    
-    <label class="md-nav__link" for="nav-6">
-      SSH
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
-        SSH
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../SSH/secure_setup/" title="Secure SSH setup" class="md-nav__link">
-      Secure SSH setup
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../SSH/secure_ssh/" title="TODO" class="md-nav__link">
-      TODO
+    <a href="../../Raspberry_Pi/setup_sdcard_headless/" title="Raspberry Pi Headless Setup" class="md-nav__link">
+      Raspberry Pi Headless Setup
     </a>
   </li>
 
@@ -495,6 +587,145 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#partition-the-physical-device" title="Partition the physical device" class="md-nav__link">
+    Partition the physical device
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-the-key-file-optional" title="Create the key file (optional)" class="md-nav__link">
+    Create the key file (optional)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-luks-partition" title="Create LUKS partition" class="md-nav__link">
+    Create LUKS partition
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#with-key-file" title="With key file" class="md-nav__link">
+    With key file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-password" title="With password" class="md-nav__link">
+    With password
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialize-the-luks-partition" title="Initialize the LUKS partition" class="md-nav__link">
+    Initialize the LUKS partition
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#with-keyfile" title="With keyfile" class="md-nav__link">
+    With keyfile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-password_1" title="With password" class="md-nav__link">
+    With password
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#size-the-luks-partition" title="Size the LUKS partition" class="md-nav__link">
+    Size the LUKS partition
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#format-the-luks-partition" title="Format the LUKS partition" class="md-nav__link">
+    Format the LUKS partition
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-mount-point" title="Create a mount point" class="md-nav__link">
+    Create a mount point
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mount-the-luks-mapping-device" title="Mount the LUKS mapping device" class="md-nav__link">
+    Mount the LUKS mapping device
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unmount-the-luks-mapping-device" title="Unmount the LUKS mapping device" class="md-nav__link">
+    Unmount the LUKS mapping device
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automountable" title="Automountable" class="md-nav__link">
+    Automountable
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#with-keyfile_1" title="With keyfile" class="md-nav__link">
+    With keyfile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-password_2" title="With password" class="md-nav__link">
+    With password
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -506,75 +737,120 @@
               
                 
                 
-                <h2 id="luks-crypt">LUKS Crypt</h2>
-<p>(<a href="https://gist.github.com/naomik/5428370">source</a>)</p>
-<p>In this guide, I'm going to setup a keyfile-encrypted LUKS partition. I will be using a single, max-size partition on a single physical device. The mountpoint can be determined by running <code>lsblk</code>.</p>
-<h1 id="partition-the-physical-device">Partition the physical device</h1>
-<pre><code class="console">parted /dev/sdX
-(parted) mklabel gpt
-(parted) mkpart primary 1 -1
-(parted) quit
-</code></pre>
+                <h1 id="luks-crypt">LUKS Crypt<a class="headerlink" href="#luks-crypt" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Source: <a href="https://gist.github.com/naomik/5428370">gist.github.com</a></p>
+</div>
+<p>In this guide, I'm going to setup a keyfile or password-encrypted LUKS partition. I will be using a single, max-size partition on a single physical device. The mountpoint can be determined by running <code>lsblk</code>.</p>
+<h2 id="partition-the-physical-device">Partition the physical device<a class="headerlink" href="#partition-the-physical-device" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><span class="gp">#</span> parted /dev/sdX
+<span class="go">(parted) mklabel gpt</span>
+<span class="go">(parted) mkpart primary 1 -1</span>
+<span class="go">(parted) quit</span>
+</pre></div>
 
-<h1 id="create-the-key-file">Create the key file</h1>
+<h2 id="create-the-key-file-optional">Create the key file (optional)<a class="headerlink" href="#create-the-key-file-optional" title="Permanent link">&para;</a></h2>
 <p>Before we go further, let's create our 2048-bit key file first. I'm going to install it <code>/root/backup.key</code></p>
-<pre><code class="console">sudo dd if=/dev/urandom of=/root/backup.key bs=1024 count=2
-sudo chmod 0400 /root/backup.key
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="gp">#</span> dd <span class="k">if</span><span class="o">=</span>/dev/urandom <span class="nv">of</span><span class="o">=</span>/root/backup.key <span class="nv">bs</span><span class="o">=</span><span class="m">1024</span> <span class="nv">count</span><span class="o">=</span><span class="m">2</span>
+<span class="gp">#</span> chmod <span class="m">0400</span> /root/backup.key
+</pre></div>
 
-<h1 id="create-luks-partition">Create LUKS partition</h1>
-<p>In my case, <code>/dev/sdX1</code> was created by <code>parted</code>. Create the LUKS partition with our key file now.</p>
-<pre><code class="console">cryptsetup luksFormat /dev/sdX1 /root/backup.key
-</code></pre>
+<h2 id="create-luks-partition">Create LUKS partition<a class="headerlink" href="#create-luks-partition" title="Permanent link">&para;</a></h2>
+<p>In my case, <code>/dev/sdX1</code> was created by <code>parted</code>. Create the LUKS partition with our key file or password now.</p>
+<h4 id="with-key-file">With key file<a class="headerlink" href="#with-key-file" title="Permanent link">&para;</a></h4>
+<dl>
+<dd>
+<div class="codehilite"><pre><span></span><span class="gp">#</span> cryptsetup luksFormat /dev/sdX1 /root/backup.key
+</pre></div>
 
 <p>Associating our key with the LUKS partition will allow us to automount it later and prevent us from ever seeing a password prompt.</p>
-<pre><code class="console">cryptsetup luksAddKey /dev/sdX1 /root/backup.key --key-file=/root/backup.key
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="gp">#</span> cryptsetup luksAddKey /dev/sdX1 /root/backup.key --key-file<span class="o">=</span>/root/backup.key
+</pre></div>
 
-<h1 id="initialize-the-luks-partition">Initialize the LUKS partition</h1>
+</dd>
+</dl>
+<h4 id="with-password">With password<a class="headerlink" href="#with-password" title="Permanent link">&para;</a></h4>
+<dl>
+<dd><div class="codehilite"><pre><span></span><span class="gp">#</span> cryptsetup luksFormat --type luks2 /dev/sdX1
+</pre></div></dd>
+</dl>
+<h2 id="initialize-the-luks-partition">Initialize the LUKS partition<a class="headerlink" href="#initialize-the-luks-partition" title="Permanent link">&para;</a></h2>
+<h4 id="with-keyfile">With keyfile<a class="headerlink" href="#with-keyfile" title="Permanent link">&para;</a></h4>
+<dl>
+<dd>
 <p>Before we can start using our LUKS partition, we have to size it properly and format it first. In order to do that, we will first use <code>luksOpen</code> which creates an IO backing device that allows us to interact with the partition. I'll call my device <code>backup</code>; you can call yours whatever you want.</p>
-<pre><code class="console">cryptsetup luksOpen /dev/sdX1 backup --key-file=/root/backup.key
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="gp">#</span> cryptsetup luksOpen /dev/sdX1 backup --key-file<span class="o">=</span>/root/backup.key
+</pre></div>
 
-<p>the LUKS mapping device will now be available at <code>/dev/mapper/backup</code></p>
-<h1 id="size-the-luks-partition">Size the LUKS partition</h1>
+<p>The LUKS mapping device will now be available at <code>/dev/mapper/backup</code></p>
+</dd>
+</dl>
+<h4 id="with-password_1">With password<a class="headerlink" href="#with-password_1" title="Permanent link">&para;</a></h4>
+<dl>
+<dd>
+<p>To gain access to the encrypted partition, unlock it with the device mapper, using:</p>
+<div class="codehilite"><pre><span></span><span class="gp">#</span> cryptsetup open /dev/sdX1 backup
+</pre></div>
+
+</dd>
+</dl>
+<h2 id="size-the-luks-partition">Size the LUKS partition<a class="headerlink" href="#size-the-luks-partition" title="Permanent link">&para;</a></h2>
 <p>When using <code>resize</code> without any additional vars, it will use the max size of the underlying partition.</p>
-<pre><code class="console">cryptsetup resize backup
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="gp">#</span> cryptsetup resize backup
+</pre></div>
 
-<h1 id="format-the-luks-partition">Format the LUKS partition</h1>
+<h2 id="format-the-luks-partition">Format the LUKS partition<a class="headerlink" href="#format-the-luks-partition" title="Permanent link">&para;</a></h2>
 <p>I'm going to use <code>ext4</code>; you can use whatever you want.</p>
-<pre><code class="console">mkfs.ext4 /dev/mapper/backup
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="gp">#</span> mkfs.ext4 /dev/mapper/backup
+</pre></div>
 
-<h1 id="create-a-mount-point">Create a mount point</h1>
+<h2 id="create-a-mount-point">Create a mount point<a class="headerlink" href="#create-a-mount-point" title="Permanent link">&para;</a></h2>
 <p>I'll create a mount point at <code>/backup</code></p>
-<pre><code class="console">sudo mkdir -p /backup
-sudo chmod 755 /backup
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="gp">#</span> mkdir -p /backup
+<span class="gp">#</span> chmod <span class="m">755</span> /backup
+</pre></div>
 
-<h1 id="mount-the-luks-mapping-device">Mount the LUKS mapping device</h1>
-<pre><code class="console">mount /dev/mapper/backup /backup
-df /backup
-</code></pre>
+<h2 id="mount-the-luks-mapping-device">Mount the LUKS mapping device<a class="headerlink" href="#mount-the-luks-mapping-device" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><span class="gp">#</span> cryptsetup open /dev/sdX1 backup
+<span class="gp">#</span> mount /dev/mapper/backup /backup
+</pre></div>
 
-<h1 id="automountable">Automountable</h1>
+<p>To check the status, use:</p>
+<div class="codehilite"><pre><span></span><span class="gp">$</span> df /backup
+</pre></div>
+
+<h2 id="unmount-the-luks-mapping-device">Unmount the LUKS mapping device<a class="headerlink" href="#unmount-the-luks-mapping-device" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><span class="gp">#</span> unmount /backup
+<span class="gp">#</span> cryptsetup close backup
+</pre></div>
+
+<h2 id="automountable">Automountable<a class="headerlink" href="#automountable" title="Permanent link">&para;</a></h2>
+<h4 id="with-keyfile_1">With keyfile<a class="headerlink" href="#with-keyfile_1" title="Permanent link">&para;</a></h4>
+<dl>
+<dd>
 <p>To avoid the hassle of mounting are encrypted volume manually, we can set it up such that it automounts using the specified key file. First you have to get the <code>UUID</code> for your partition.</p>
-<pre><code class="console">ls -l /dev/disk/by-uuid
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="gp">$</span> ls -l /dev/disk/by-uuid
+</pre></div>
 
-<p>Find the UUID that links to your disk. In my case, it is <code>651322a-8171-49b4-9707-a96698ec826e</code>.</p>
-<pre><code class="console">export UUID=&quot;651322a-8171-49b4-9707-a96698ec826e&quot;
-sudo echo &quot;backup UUID=${UUID} /root/backup.key luks&quot; &gt;&gt; /etc/crypttab
-</code></pre>
+<p>Find the UUID that links to your disk. It has the format <code>xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</code>.</p>
+<div class="codehilite"><pre><span></span><span class="gp">#</span> <span class="nb">export</span> <span class="nv">UUID</span><span class="o">=</span><span class="s2">&quot;xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;</span>
+<span class="gp">#</span> <span class="nb">echo</span> <span class="s2">&quot;backup UUID=</span><span class="si">${</span><span class="nv">UUID</span><span class="si">}</span><span class="s2"> /root/backup.key luks&quot;</span> &gt;&gt; /etc/crypttab
+</pre></div>
 
 <p>Finally, specify the automount</p>
-<pre><code class="console">sudo echo &quot;/dev/mapper/backup /backup auto&quot; &gt;&gt; /etc/fstab
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="gp">#</span> <span class="nb">echo</span> <span class="s2">&quot;/dev/mapper/backup /backup auto&quot;</span> &gt;&gt; /etc/fstab
+</pre></div>
 
+</dd>
+</dl>
+<h4 id="with-password_2">With password<a class="headerlink" href="#with-password_2" title="Permanent link">&para;</a></h4>
+<dl>
+<dd><div class="codehilite"><pre><span></span><span class="gp">#</span> <span class="nb">echo</span> <span class="s2">&quot;/dev/mapper/backup /backup auto defaults,errors=remount-ro 0 2&quot;</span> &gt;&gt; /etc/fstab
+</pre></div></dd>
+</dl>
 <p>Mount stuff!</p>
-<pre><code class="console">sudo mount -a
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="gp">#</span> mount -a
+</pre></div>
                 
                   
                 
@@ -610,13 +886,13 @@ sudo echo &quot;backup UUID=${UUID} /root/backup.key luks&quot; &gt;&gt; /etc/cr
           </a>
         
         
-          <a href="../luks_crypt_password/" title="LUKS Crypt" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../Raspberry_Pi/openvpn/" title="OpenVPN on a Raspberry Pi" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                LUKS Crypt
+                OpenVPN on a Raspberry Pi
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
