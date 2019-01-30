@@ -1,12 +1,12 @@
 # Borg Backup
 
-([source](https://borgbackup.readthedocs.io/en/stable/))
+!!! quote "Source: [borgbackup.readthedocs.io](https://borgbackup.readthedocs.io/en/stable/)"
 
 Step-by-step guide to using borg as a tool for backups across multiple devices. I'll use a client-server approach where the server stores backups of multiple clients.
 
 ## Partition the physical drive and create a filesystem
 
-([source](https://www.digitalocean.com/community/tutorials/how-to-partition-and-format-storage-devices-in-linux))
+!!! quote "Source: [www.digitalocean.com](https://www.digitalocean.com/community/tutorials/how-to-partition-and-format-storage-devices-in-linux)"
 
 Find the device name of your hard drive first using `lsblk` or `parted -l`. The name is in the format `sdX` where `X` is a lowercase letter. Create a new primary partition on this device using `parted`. When asked, confirm with `Yes`.
 
@@ -55,8 +55,8 @@ Add a user on the server who will have access to borg. Set the home directory to
 On each client device, create a new ssh identity for borg and copy the public key to the server.
 
 ```console
-ssh-keygen -t ed25519
-ssh-copy-id -i «path/to/key» borg@«server»
+$ ssh-keygen -t ed25519
+$ ssh-copy-id -i «path/to/key» borg@«server»
 ```
 
 ## Restrict borg user access
@@ -79,19 +79,19 @@ command="borg serve --restrict-to-path ~/repo/«client» --append-only" ssh-ed25
 
 As `borg` on `«server»`:
 ```console
-mkdir -p ~/repo/«client»
+$ mkdir -p ~/repo/«client»
 ```
 
 On client:
 
 ```console
-borg init --encryption=repokey borg@«server»:~/repo/«client»
+$ borg init --encryption=repokey borg@«server»:~/repo/«client»
 ```
 
 Export the repository key and store it in a safe location (e.g. password safe)
 
 ```console
-borg key export borg@«server»:~/repo/«client» ./borg-key-«client»
+$ borg key export borg@«server»:~/repo/«client» ./borg-key-«client»
 ```
 
 ## Backup a single file or directory
@@ -102,7 +102,7 @@ borg key export borg@«server»:~/repo/«client» ./borg-key-«client»
 
 ## Backup an entire filesystem
 
-([source](https://thomas-leister.de/server-backups-mit-borg/))
+!!! quote "Source: [thomas-leistner.de](https://thomas-leister.de/server-backups-mit-borg/)"
 
 Locations you want to exclude:
 

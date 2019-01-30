@@ -1,6 +1,6 @@
 # OpenVPN on a Raspberry Pi
 
-([source](https://www.kuketz-blog.de/pivpn-raspberry-pi-mit-openvpn-raspberry-pi-teil3/))
+!!! quote "Source: [www.kuketz-blog.de](https://www.kuketz-blog.de/pivpn-raspberry-pi-mit-openvpn-raspberry-pi-teil3/)"
 
 ## Create an openvpn user
 
@@ -17,20 +17,20 @@ To avoid conflicts with other users, create a new user for the VPN service and s
 Log in as «openvpn».
 
 ```console
-su - «openvpn»
+$ su - «openvpn»
 ```
 
 ## Run the PiVPN install script
 
 ```console
-curl -L install.pivpn.io > pivpn.sh
-chmod +x pivpn.sh
+$ curl -L install.pivpn.io > pivpn.sh
+$ chmod +x pivpn.sh
 ```
 
 Once you are sure the script is not harmful in any way, run the installation script.
 
 ```
-# ./pivpn.sh
+$ ./pivpn.sh
 ```
 
 1. Confirm the current network settings and make sure the shown IP address (eg. 192.168.2.110) is always assigned to this device by the router.
@@ -46,7 +46,7 @@ Once you are sure the script is not harmful in any way, run the installation scr
 To generate a client configuration, use:
 
 ```console
-pivpn add
+$ pivpn add
 ```
 
 Select a different username and password for each client. Copy the resulting `ovpn` file to your client device via scp and use it in your OpenVPN client.

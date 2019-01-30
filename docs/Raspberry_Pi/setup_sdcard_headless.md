@@ -1,6 +1,6 @@
-# Raspberry Pi Setup Guide
+# Raspberry Pi Headless Setup
 
-([source](https://www.raspberrypi.org/documentation/installation/installing-images/linux.md))
+!!! quote "Source: [www.raspberrypi.org](https://www.raspberrypi.org/documentation/installation/installing-images/linux.md)"
 
 This guide describes the installation of Raspbian on a Raspberry Pi 3B+ as a headless server.
 
@@ -11,8 +11,8 @@ The latest Raspbian image can be downloaded from https://www.raspberrypi.org/dow
 Extract the zip file by running the following command with adjusted date:
 
 ```console
-unzip 2018-11-13-raspbian-stretch-lite.zip
-rm 2018-11-13-raspbian-stretch-lite.zip
+$ unzip 2018-11-13-raspbian-stretch-lite.zip
+$ rm 2018-11-13-raspbian-stretch-lite.zip
 ```
 
 ## Write the image to the SD card
@@ -22,7 +22,7 @@ Run `lsblk` before and after inserting the SD card into the SD card reader in or
 If any partitions on the SD card are currently mounted (check the rightmost column of `lsblk`), unmount all of them.
 
 ```console
-umount /dev/sdX1
+$ umount /dev/sdX1
 ```
 
 Write the image to the SD card with `dd`. `if=` specifies the image as the source file and `of=` specifies the SD card as the destination. **Make sure to use the correct device to avoid data loss.** The destination is specified by device name, not by partition name.
@@ -44,7 +44,7 @@ Truncate the new image to the size of the original image and compare the new ima
 
 ```console
 # truncate --reference 2018-11-13-raspbian-stretch-lite.img from-sd-card.img
-diff -s from-sd-card.img 2018-11-13-raspbian-stretch-lite.img
+$ diff -s from-sd-card.img 2018-11-13-raspbian-stretch-lite.img
 ```
 
 ## Eject the SD card
@@ -52,7 +52,7 @@ diff -s from-sd-card.img 2018-11-13-raspbian-stretch-lite.img
 Flush the write cache.
 
 ```console
-sync
+$ sync
 ```
 
 Remove the SD card from the card reader.
@@ -68,12 +68,12 @@ touch ssh
 
 ## Enable WIFI for headless systems
 
-([source](https://raspberrypi.stackexchange.com/a/10413))
+!!! quote "Source: [raspberrypi.stackexchange.com](https://raspberrypi.stackexchange.com/a/10413)"
 
 Insert the SD card into the card reader. It will be mounted by defalt. Navigate to the boot partition of the SD card. The mountpoint of the boot partition can be determined via `lsblk`.
 
 ```ssh
-cd /run/media/$USER/boot
+$ cd /run/media/$USER/boot
 ```
 
 Create a file named `wpa_supplicant.conf` with the following content:
@@ -90,21 +90,21 @@ network={
 }
 ```
 
-Replace «your_ISO-3166-1_two-letter_country_code» with your [ISO Country Code](https://www.iso.org/obp/ui/#search), «your_SSID» with the SSID of your network and «your_PSK» with the corresponding wifi password.
+Replace `«your_ISO-3166-1_two-letter_country_code»` with your [ISO Country Code](https://www.iso.org/obp/ui/#search), `«your_SSID»` with the SSID of your network and `«your_PSK»` with the corresponding wifi password.
 
 ## Connect to the Raspberry Pi
 
-([source](https://hackernoon.com/raspberry-pi-headless-install-462ccabd75d0))
+!!! quote "Source: [hackernoon.com](https://hackernoon.com/raspberry-pi-headless-install-462ccabd75d0)"
 
 Establish an ssh connection to the Raspberry Pi with default credentials:
 
 ```
-User: pi
-Password: raspberry
+    User:  pi
+Password:  raspberry
 ```
 
 ```console
-ssh pi@raspberrypi
+$ ssh pi@raspberrypi
 ```
 
 If this does not initialize a connection, find out the IP either by running ```nmap -p 22 «subnet mask»``` on your local subnet or finding the device in the router's DHCP table.
