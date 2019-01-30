@@ -1,0 +1,910 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.3.0">
+    
+    
+      
+        <title>Borg Backup - Setup Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.572ca0f0.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#3f51b5">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.962652e9.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="indigo" data-md-color-accent="pink">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#borg-backup" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="Setup Wiki" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">receipt</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Setup Wiki
+              </span>
+              <span class="md-header-nav__topic">
+                Borg Backup
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/rngcntr/setupwiki" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      rngcntr/setupwiki
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="Setup Wiki" class="md-nav__button md-logo">
+      
+        <i class="md-icon">receipt</i>
+      
+    </a>
+    Setup Wiki
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/rngcntr/setupwiki" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      rngcntr/setupwiki
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="SETUP WIKI" class="md-nav__link">
+      SETUP WIKI
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../license/" title="License" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Backup
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Backup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Borg Backup
+      </label>
+    
+    <a href="./" title="Borg Backup" class="md-nav__link md-nav__link--active">
+      Borg Backup
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#partition-the-physical-drive-and-create-a-filesystem" title="Partition the physical drive and create a filesystem" class="md-nav__link">
+    Partition the physical drive and create a filesystem
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mounting-the-partition-at-boot-time" title="Mounting the partition at boot time" class="md-nav__link">
+    Mounting the partition at boot time
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-backup-user-and-set-its-home-directory" title="Create a backup user and set it's home directory" class="md-nav__link">
+    Create a backup user and set it's home directory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#allow-ssh-login-as-borg-user" title="Allow ssh login as borg user" class="md-nav__link">
+    Allow ssh login as borg user
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restrict-borg-user-access" title="Restrict borg user access" class="md-nav__link">
+    Restrict borg user access
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-borg-repository" title="Create a borg repository" class="md-nav__link">
+    Create a borg repository
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backup-a-single-file-or-directory" title="Backup a single file or directory" class="md-nav__link">
+    Backup a single file or directory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backup-an-entire-filesystem" title="Backup an entire filesystem" class="md-nav__link">
+    Backup an entire filesystem
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restore-a-backup" title="Restore a backup" class="md-nav__link">
+    Restore a backup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-an-archive" title="Delete an archive" class="md-nav__link">
+    Delete an archive
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-old-archives" title="Delete old archives" class="md-nav__link">
+    Delete old archives
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Dotfiles
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Dotfiles
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Dotfiles/setup/" title="Dotfiles" class="md-nav__link">
+      Dotfiles
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Full Disk Encryption
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Full Disk Encryption
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Full_Disk_Encryption/luks_crypt_keyfile/" title="Luks crypt keyfile" class="md-nav__link">
+      Luks crypt keyfile
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Full_Disk_Encryption/luks_crypt_password/" title="LUKS Crypt" class="md-nav__link">
+      LUKS Crypt
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Raspberry Pi
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Raspberry Pi
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Raspberry_Pi/openvpn/" title="OpenVPN on a Raspberry Pi" class="md-nav__link">
+      OpenVPN on a Raspberry Pi
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Raspberry_Pi/setup_sdcard_headless/" title="Raspberry Pi Setup Guide" class="md-nav__link">
+      Raspberry Pi Setup Guide
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      SSH
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        SSH
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../SSH/secure_setup/" title="Secure SSH setup" class="md-nav__link">
+      Secure SSH setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../SSH/secure_ssh/" title="TODO" class="md-nav__link">
+      TODO
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#partition-the-physical-drive-and-create-a-filesystem" title="Partition the physical drive and create a filesystem" class="md-nav__link">
+    Partition the physical drive and create a filesystem
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mounting-the-partition-at-boot-time" title="Mounting the partition at boot time" class="md-nav__link">
+    Mounting the partition at boot time
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-backup-user-and-set-its-home-directory" title="Create a backup user and set it's home directory" class="md-nav__link">
+    Create a backup user and set it's home directory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#allow-ssh-login-as-borg-user" title="Allow ssh login as borg user" class="md-nav__link">
+    Allow ssh login as borg user
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restrict-borg-user-access" title="Restrict borg user access" class="md-nav__link">
+    Restrict borg user access
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-borg-repository" title="Create a borg repository" class="md-nav__link">
+    Create a borg repository
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backup-a-single-file-or-directory" title="Backup a single file or directory" class="md-nav__link">
+    Backup a single file or directory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backup-an-entire-filesystem" title="Backup an entire filesystem" class="md-nav__link">
+    Backup an entire filesystem
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restore-a-backup" title="Restore a backup" class="md-nav__link">
+    Restore a backup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-an-archive" title="Delete an archive" class="md-nav__link">
+    Delete an archive
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-old-archives" title="Delete old archives" class="md-nav__link">
+    Delete old archives
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="borg-backup">Borg Backup</h1>
+<p>(<a href="https://borgbackup.readthedocs.io/en/stable/">source</a>)</p>
+<p>Step-by-step guide to using borg as a tool for backups across multiple devices. I'll use a client-server approach where the server stores backups of multiple clients.</p>
+<h2 id="partition-the-physical-drive-and-create-a-filesystem">Partition the physical drive and create a filesystem</h2>
+<p>(<a href="https://www.digitalocean.com/community/tutorials/how-to-partition-and-format-storage-devices-in-linux">source</a>)</p>
+<p>Find the device name of your hard drive first using <code>lsblk</code> or <code>parted -l</code>. The name is in the format <code>sdX</code> where <code>X</code> is a lowercase letter. Create a new primary partition on this device using <code>parted</code>. When asked, confirm with <code>Yes</code>.</p>
+<pre><code class="console"># parted /dev/sdX/
+(parted) mklabel gpt
+(parted) mkpart primary 1 -1
+(parted) quit
+</code></pre>
+
+<p>Use <code>mkfs.ext4</code> to format the partition as ext4. Optionally, add a label by passing <code>-L</code> to the command. I use the label <code>backup</code>.</p>
+<pre><code class="console"># mkfs.ext4 -L backup /dev/sdX1
+</code></pre>
+
+<p>This process may take a little while. Verify it's success afterwards by checking <code>lsblk --fs</code>.</p>
+<h3 id="mounting-the-partition-at-boot-time">Mounting the partition at boot time</h3>
+<p>In order to mount the filesystem each time our server boots, edit the file <code>/etc/fstab</code>. In this case we add a line referencing the UUID found in <code>lsblk --fs</code> and mount it as ext4 to <code>/mnt/backup</code>.</p>
+<pre><code>UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx /mnt/backup    ext4    defaults   0       2
+</code></pre>
+
+<p>Now reboot or manually mount the filesystem.</p>
+<pre><code class="console"># /mnt/backup
+# mount -a
+</code></pre>
+
+<h2 id="create-a-backup-user-and-set-its-home-directory">Create a backup user and set it's home directory</h2>
+<p>Add a user on the server who will have access to borg. Set the home directory to the backup partition.</p>
+<pre><code class="console"># useradd -m borg
+# passwd borg
+# usermod -d /mnt/backup/borg -m borg
+</code></pre>
+
+<h2 id="allow-ssh-login-as-borg-user">Allow ssh login as borg user</h2>
+<p>On each client device, create a new ssh identity for borg and copy the public key to the server.</p>
+<pre><code class="console">ssh-keygen -t ed25519
+ssh-copy-id -i «path/to/key» borg@«server»
+</code></pre>
+
+<h2 id="restrict-borg-user-access">Restrict borg user access</h2>
+<p>In case a single machine is compromised, an attacker will have acces to the borg server and will be able to delete all backups and control the server. To avoid this, we can restrict ssh access to only allow the borg command. Therefore, we log in as borg on our server and edit the file <code>.ssh/authorized_keys</code>. For each client, find the corresponding line and expand it by specifying <code>command="..."</code> as seen below:</p>
+<pre><code>command=&quot;borg serve --restrict-to-path ~/repo/«client»&quot; ssh-ed25519 «key_fingerprint» «user»@«client»
+</code></pre>
+
+<p>Note that an attacker is still able to run <code>borg prune</code> and thereby delete existing backups. In order to avoid this, we can additionaly specify the <code>--append-only</code> flag.</p>
+<p>In this case we will not be able to run <code>borg prune</code> remotely anymore. To delete old backups, we will need physical access to the machine.</p>
+<pre><code>command=&quot;borg serve --restrict-to-path ~/repo/«client» --append-only&quot; ssh-ed25519 «key_fingerprint» «user»@«client»
+</code></pre>
+
+<h2 id="create-a-borg-repository">Create a borg repository</h2>
+<p>As <code>borg</code> on <code>«server»</code>:</p>
+<pre><code class="console">mkdir -p ~/repo/«client»
+</code></pre>
+
+<p>On client:</p>
+<pre><code class="console">borg init --encryption=repokey borg@«server»:~/repo/«client»
+</code></pre>
+
+<p>Export the repository key and store it in a safe location (e.g. password safe)</p>
+<pre><code class="console">borg key export borg@«server»:~/repo/«client» ./borg-key-«client»
+</code></pre>
+
+<h2 id="backup-a-single-file-or-directory">Backup a single file or directory</h2>
+<pre><code class="console"># borg create -s --progress borg@«server»:~/repo/«client»::«archive» /path/to/file
+</code></pre>
+
+<h2 id="backup-an-entire-filesystem">Backup an entire filesystem</h2>
+<p>(<a href="https://thomas-leister.de/server-backups-mit-borg/">source</a>)</p>
+<p>Locations you want to exclude:</p>
+<pre><code>/dev
+/lost+found
+/mnt
+/media
+/proc
+/run
+/sys
+/tmp
+</code></pre>
+
+<pre><code class="console"># borg create --progress --verbose --stats --exclude-caches --exclude '/dev/*' \
+    --exclude '/lost+found/*'       \
+    --exclude '/mnt/*'              \
+    --exclude '/media/*'            \
+    --exclude '/proc/*'             \
+    --exclude '/run/*'              \
+    --exclude '/sys/*'              \
+    --exclude '/tmp/*'              \
+    --exclude re:/\\.cache/         \
+    --exclude re:/\\.ccache/        \
+    borg@«server»:~/repo/«client»::«client»-«date» /
+</code></pre>
+
+<h2 id="restore-a-backup">Restore a backup</h2>
+<h2 id="delete-an-archive">Delete an archive</h2>
+<pre><code class="console"># borg delete borg@«server»:~/repo/«client»::«archive»
+</code></pre>
+
+<h2 id="delete-old-archives">Delete old archives</h2>
+<pre><code class="console"># borg prune --verbose --stats --progress --list \
+    --keep-daily=14                 \
+    --keep-weekly=8                 \
+    --keep-monthly=12               \
+    --keep-yearly=10                \
+    borg@«server»:~/repo/«client»
+</code></pre>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../license/" title="License" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                License
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../Dotfiles/setup/" title="Dotfiles" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Dotfiles
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/rngcntr" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://twitter.com/rngcntr" class="md-footer-social__link fa fa-twitter"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.a353778b.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+  </body>
+</html>
