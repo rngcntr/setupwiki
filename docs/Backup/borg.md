@@ -1,8 +1,12 @@
-# Borg Backup ([source](https://borgbackup.readthedocs.io/en/stable/))
+# Borg Backup
+
+([source](https://borgbackup.readthedocs.io/en/stable/))
 
 Step-by-step guide to using borg as a tool for backups across multiple devices. I'll use a client-server approach where the server stores backups of multiple clients.
 
-## Partition the physical drive and create a filesystem ([source](https://www.digitalocean.com/community/tutorials/how-to-partition-and-format-storage-devices-in-linux))
+## Partition the physical drive and create a filesystem
+
+([source](https://www.digitalocean.com/community/tutorials/how-to-partition-and-format-storage-devices-in-linux))
 
 Find the device name of your hard drive first using `lsblk` or `parted -l`. The name is in the format `sdX` where `X` is a lowercase letter. Create a new primary partition on this device using `parted`. When asked, confirm with `Yes`.
 
@@ -96,7 +100,9 @@ borg key export borg@«server»:~/repo/«client» ./borg-key-«client»
 # borg create -s --progress borg@«server»:~/repo/«client»::«archive» /path/to/file
 ```
 
-## Backup an entire filesystem ([source](https://thomas-leister.de/server-backups-mit-borg/))
+## Backup an entire filesystem
+
+([source](https://thomas-leister.de/server-backups-mit-borg/))
 
 Locations you want to exclude:
 

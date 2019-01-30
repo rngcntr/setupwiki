@@ -1,4 +1,6 @@
-# Raspberry Pi Setup Guide ([source](https://www.raspberrypi.org/documentation/installation/installing-images/linux.md))
+# Raspberry Pi Setup Guide
+
+([source](https://www.raspberrypi.org/documentation/installation/installing-images/linux.md))
 
 This guide describes the installation of Raspbian on a Raspberry Pi 3B+ as a headless server.
 
@@ -64,7 +66,9 @@ cd /run/media/$USER/boot
 touch ssh
 ```
 
-## Enable WIFI for headless systems ([source](https://raspberrypi.stackexchange.com/a/10413))
+## Enable WIFI for headless systems
+
+([source](https://raspberrypi.stackexchange.com/a/10413))
 
 Insert the SD card into the card reader. It will be mounted by defalt. Navigate to the boot partition of the SD card. The mountpoint of the boot partition can be determined via `lsblk`.
 
@@ -88,7 +92,9 @@ network={
 
 Replace «your_ISO-3166-1_two-letter_country_code» with your [ISO Country Code](https://www.iso.org/obp/ui/#search), «your_SSID» with the SSID of your network and «your_PSK» with the corresponding wifi password.
 
-## Connect to the Raspberry Pi ([source](https://hackernoon.com/raspberry-pi-headless-install-462ccabd75d0))
+## Connect to the Raspberry Pi
+
+([source](https://hackernoon.com/raspberry-pi-headless-install-462ccabd75d0))
 
 Establish an ssh connection to the Raspberry Pi with default credentials:
 

@@ -1,0 +1,17 @@
+site_name: Setup Wiki
+theme:
+    name: 'material'
+    palette:
+        primary: 'indigo'
+        accent: 'pink'
+    logo:
+        icon: 'receipt'
+repo_name: 'rngcntr/setupwiki'
+repo_url: 'https://github.com/rngcntr/setupwiki'
+edit_uri: ''
+extra:
+    social:
+        - type: 'github'
+          link: 'https://github.com/rngcntr'
+        - type: 'twitter'
+          link: 'https://twitter.com/rngcntr'
