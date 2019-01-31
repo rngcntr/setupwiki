@@ -118,16 +118,15 @@ $ borg key export borg@«server»:~/repo/«client» ./borg-key-«client»
 
 Locations you want to exclude:
 
-```
-/dev
-/lost+found
-/mnt
-/media
-/proc
-/run
-/sys
-/tmp
-```
+    #!
+    /dev
+    /lost+found
+    /mnt
+    /media
+    /proc
+    /run
+    /sys
+    /tmp
 
 ```console
 # borg create --progress --verbose --stats --exclude-caches --exclude '/dev/*' \

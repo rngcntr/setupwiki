@@ -78,17 +78,16 @@ $ cd /run/media/$USER/boot
 
 Create a file named `wpa_supplicant.conf` with the following content:
 
-```
-ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-update_config=1
-country=«your_ISO-3166-1_two-letter_country_code»
+    #!
+    ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+    update_config=1
+    country=«your_ISO-3166-1_two-letter_country_code»
 
-network={
-    ssid="«your_SSID»"
-    psk="«your_PSK»"
-    key_mgmt=WPA-PSK
-}
-```
+    network={
+        ssid="«your_SSID»"
+        psk="«your_PSK»"
+        key_mgmt=WPA-PSK
+    }
 
 Replace `«your_ISO-3166-1_two-letter_country_code»` with your [ISO Country Code](https://www.iso.org/obp/ui/#search), `«your_SSID»` with the SSID of your network and `«your_PSK»` with the corresponding wifi password.
 
