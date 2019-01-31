@@ -160,3 +160,7 @@ Locations you want to exclude:
     --keep-yearly=10                \
     borg@«server»:~/repo/«client»
 ```
+
+## Automating daily backup
+
+!!! quote "Source: [www.thomas-krenn.com](https://www.thomas-krenn.com/de/wiki/Backup_unter_Linux_mit_rsnapshot#Anacron)"
