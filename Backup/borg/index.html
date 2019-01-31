@@ -652,20 +652,20 @@
 <div class="admonition quote">
 <p class="admonition-title">Source: <a href="https://www.digitalocean.com/community/tutorials/how-to-partition-and-format-storage-devices-in-linux">www.digitalocean.com</a></p>
 </div>
-<p>Find the device name of your hard drive first using <code>lsblk</code> or <code>parted -l</code>. The name is in the format <code>sdX</code> where <code>X</code> is a lowercase letter. Create a new primary partition on this device using <code>parted</code>. When asked, confirm with <code>Yes</code>.</p>
+<p>Find the device name of your hard drive first using <code class="codehilite">lsblk</code> or <code class="codehilite">parted -l</code>. The name is in the format <code class="codehilite">sdX</code> where <code class="codehilite">X</code> is a lowercase letter. Create a new primary partition on this device using <code class="codehilite">parted</code>. When asked, confirm with <code class="codehilite">Yes</code>.</p>
 <div class="codehilite"><pre><span></span><span class="gp">#</span> parted /dev/sdX/
 <span class="go">(parted) mklabel gpt</span>
 <span class="go">(parted) mkpart primary 1 -1</span>
 <span class="go">(parted) quit</span>
 </pre></div>
 
-<p>Use <code>mkfs.ext4</code> to format the partition as ext4. Optionally, add a label by passing <code>-L</code> to the command. I use the label <code>backup</code>.</p>
+<p>Use <code class="codehilite">mkfs.ext4</code> to format the partition as ext4. Optionally, add a label by passing <code class="codehilite">-L</code> to the command. I use the label <code class="codehilite">backup</code>.</p>
 <div class="codehilite"><pre><span></span><span class="gp">#</span> mkfs.ext4 -L backup /dev/sdX1
 </pre></div>
 
-<p>This process may take a little while. Verify it's success afterwards by checking <code>lsblk --fs</code>.</p>
+<p>This process may take a little while. Verify it's success afterwards by checking <code class="codehilite">lsblk --fs</code>.</p>
 <h3 id="mounting-the-partition-at-boot-time">Mounting the partition at boot time<a class="headerlink" href="#mounting-the-partition-at-boot-time" title="Permanent link">&para;</a></h3>
-<p>In order to mount the filesystem each time our server boots, edit the file <code>/etc/fstab</code>. In this case we add a line referencing the UUID found in <code>lsblk --fs</code> and mount it as ext4 to <code>/mnt/backup</code>.</p>
+<p>In order to mount the filesystem each time our server boots, edit the file <code class="codehilite">/etc/fstab</code>. In this case we add a line referencing the UUID found in <code class="codehilite">lsblk --fs</code> and mount it as ext4 to <code class="codehilite">/mnt/backup</code>.</p>
 <div class="codehilite"><pre><span></span>UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx /mnt/backup    ext4    defaults   0       2
 </pre></div>
 
@@ -688,12 +688,12 @@
 </pre></div>
 
 <h2 id="restrict-borg-user-access">Restrict borg user access<a class="headerlink" href="#restrict-borg-user-access" title="Permanent link">&para;</a></h2>
-<p>In case a single machine is compromised, an attacker will have acces to the borg server and will be able to delete all backups and control the server. To avoid this, we can restrict ssh access to only allow the borg command. Therefore, we log in as borg on our server and edit the file <code>.ssh/authorized_keys</code>. For each client, find the corresponding line and expand it by specifying <code>command="..."</code> as seen below:</p>
+<p>In case a single machine is compromised, an attacker will have acces to the borg server and will be able to delete all backups and control the server. To avoid this, we can restrict ssh access to only allow the borg command. Therefore, we log in as borg on our server and edit the file <code class="codehilite"><span class="na">.ssh</span><span class="err">/</span><span class="no">authorized_keys</span></code>. For each client, find the corresponding line and expand it by specifying <code class="codehilite">command=&quot;...&quot;</code> as seen below:</p>
 <div class="codehilite"><pre><span></span>command=&quot;borg serve --restrict-to-path ~/repo/«client»&quot; ssh-ed25519 «key_fingerprint» «user»@«client»
 </pre></div>
 
-<p>Note that an attacker is still able to run <code>borg prune</code> and thereby delete existing backups. In order to avoid this, we can additionaly specify the <code>--append-only</code> flag.</p>
-<p>In this case we will not be able to run <code>borg prune</code> remotely anymore. To delete old backups, we will need physical access to the machine.</p>
+<p>Note that an attacker is still able to run <code class="codehilite">borg prune</code> and thereby delete existing backups. In order to avoid this, we can additionaly specify the <code class="codehilite">--append-only</code> flag.</p>
+<p>In this case we will not be able to run <code class="codehilite">borg prune</code> remotely anymore. To delete old backups, we will need physical access to the machine.</p>
 <div class="codehilite"><pre><span></span>command=&quot;borg serve --restrict-to-path ~/repo/«client» --append-only&quot; ssh-ed25519 «key_fingerprint» «user»@«client»
 </pre></div>
 
@@ -703,12 +703,12 @@
 
 <div class="admonition info">
 <p class="admonition-title">Login as borg via root</p>
-<p>After doing this, we will still be able to log into our borg account by running <code>su - borg</code> as root.
+<p>After doing this, we will still be able to log into our borg account by running <code class="codehilite">su - borg</code> as root.
 <div class="codehilite"><pre><span></span><span class="gp">#</span> su - borg
 </pre></div></p>
 </div>
 <h2 id="create-a-borg-repository">Create a borg repository<a class="headerlink" href="#create-a-borg-repository" title="Permanent link">&para;</a></h2>
-<p>As <code>borg</code> on <code>«server»</code>:
+<p>As <code class="codehilite">borg</code> on <code class="codehilite">«server»</code>:
 <div class="codehilite"><pre><span></span><span class="gp">$</span> mkdir -p ~/repo/«client»
 </pre></div></p>
 <p>On client:</p>
@@ -728,7 +728,14 @@
 <p class="admonition-title">Source: <a href="https://thomas-leister.de/server-backups-mit-borg/">thomas-leistner.de</a></p>
 </div>
 <p>Locations you want to exclude:</p>
-<div class="codehilite"><pre><span></span>/dev
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>/dev
 /lost+found
 /mnt
 /media
@@ -737,6 +744,7 @@
 /sys
 /tmp
 </pre></div>
+</td></tr></table>
 
 <div class="codehilite"><pre><span></span><span class="gp">#</span> borg create --progress --verbose --stats --exclude-caches --exclude <span class="s1">&#39;/dev/*&#39;</span> <span class="se">\</span>
     --exclude <span class="s1">&#39;/lost+found/*&#39;</span>       <span class="se">\</span>

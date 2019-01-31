@@ -614,17 +614,17 @@
 </pre></div>
 
 <h2 id="write-the-image-to-the-sd-card">Write the image to the SD card<a class="headerlink" href="#write-the-image-to-the-sd-card" title="Permanent link">&para;</a></h2>
-<p>Run <code>lsblk</code> before and after inserting the SD card into the SD card reader in order to determine the <code>NAME</code> of the SD card. The device should be listed as <code>sdX</code> where <code>X</code> is a lower-case letter indicating the device.</p>
-<p>If any partitions on the SD card are currently mounted (check the rightmost column of <code>lsblk</code>), unmount all of them.</p>
+<p>Run <code class="codehilite">lsblk</code> before and after inserting the SD card into the SD card reader in order to determine the <code class="codehilite">NAME</code> of the SD card. The device should be listed as <code class="codehilite">sdX</code> where <code class="codehilite">X</code> is a lower-case letter indicating the device.</p>
+<p>If any partitions on the SD card are currently mounted (check the rightmost column of <code class="codehilite">lsblk</code>), unmount all of them.</p>
 <div class="codehilite"><pre><span></span><span class="gp">$</span> umount /dev/sdX1
 </pre></div>
 
-<p>Write the image to the SD card with <code>dd</code>. <code>if=</code> specifies the image as the source file and <code>of=</code> specifies the SD card as the destination. <strong>Make sure to use the correct device to avoid data loss.</strong> The destination is specified by device name, not by partition name.</p>
+<p>Write the image to the SD card with <code class="codehilite">dd</code>. <code class="codehilite">if=</code> specifies the image as the source file and <code class="codehilite">of=</code> specifies the SD card as the destination. <strong>Make sure to use the correct device to avoid data loss.</strong> The destination is specified by device name, not by partition name.</p>
 <p><div class="codehilite"><pre><span></span><span class="gp">#</span> dd <span class="nv">bs</span><span class="o">=</span>4M <span class="k">if</span><span class="o">=</span><span class="m">2018</span>-11-13-raspbian-stretch-lite.img <span class="nv">of</span><span class="o">=</span>/dev/sdX <span class="nv">status</span><span class="o">=</span>progress <span class="nv">conv</span><span class="o">=</span>fsync
 </pre></div>
-If any errors occur, try block size <code>1M</code> instead of <code>4M</code></p>
+If any errors occur, try block size <code class="codehilite">1M</code> instead of <code class="codehilite">4M</code></p>
 <h3 id="optional-checking-whether-the-image-was-written-correctly">Optional: Checking whether the image was written correctly<a class="headerlink" href="#optional-checking-whether-the-image-was-written-correctly" title="Permanent link">&para;</a></h3>
-<p>The output of the <code>dd</code> command shows a number of written records (<code>xxx+0 records in</code>). Use this record count to copy the image back from the SD card to your local drive.</p>
+<p>The output of the <code class="codehilite">dd</code> command shows a number of written records (<code class="codehilite">xxx+0 records in</code>). Use this record count to copy the image back from the SD card to your local drive.</p>
 <div class="codehilite"><pre><span></span><span class="gp">#</span> dd <span class="nv">bs</span><span class="o">=</span>4M <span class="k">if</span><span class="o">=</span>/dev/sdX <span class="nv">of</span><span class="o">=</span>from-sd-card.img <span class="nv">status</span><span class="o">=</span>progress <span class="nv">count</span><span class="o">=</span>xxx
 </pre></div>
 
@@ -640,7 +640,7 @@ If any errors occur, try block size <code>1M</code> instead of <code>4M</code></
 
 <p>Remove the SD card from the card reader.</p>
 <h2 id="enable-ssh-for-headless-systems">Enable ssh for headless systems<a class="headerlink" href="#enable-ssh-for-headless-systems" title="Permanent link">&para;</a></h2>
-<p>Insert the SD card into the card reader. It will be mounted by defalt. Navigate to the boot partition of the SD card and create an empty file named <code>ssh</code>. The mountpoint of the boot partition can be determined via <code>lsblk</code>.</p>
+<p>Insert the SD card into the card reader. It will be mounted by defalt. Navigate to the boot partition of the SD card and create an empty file named <code class="codehilite">ssh</code>. The mountpoint of the boot partition can be determined via <code class="codehilite">lsblk</code>.</p>
 <div class="codehilite"><pre><span></span>cd /run/media/$USER/boot
 touch ssh
 </pre></div>
@@ -649,12 +649,20 @@ touch ssh
 <div class="admonition quote">
 <p class="admonition-title">Source: <a href="https://raspberrypi.stackexchange.com/a/10413">raspberrypi.stackexchange.com</a></p>
 </div>
-<p>Insert the SD card into the card reader. It will be mounted by defalt. Navigate to the boot partition of the SD card. The mountpoint of the boot partition can be determined via <code>lsblk</code>.</p>
-<div class="codehilite"><pre><span></span>$ cd /run/media/$USER/boot
+<p>Insert the SD card into the card reader. It will be mounted by defalt. Navigate to the boot partition of the SD card. The mountpoint of the boot partition can be determined via <code class="codehilite">lsblk</code>.</p>
+<div class="codehilite"><pre><span></span>$ <span class="nb">cd</span> /run/media/<span class="nv">$USER</span>/boot
 </pre></div>
 
-<p>Create a file named <code>wpa_supplicant.conf</code> with the following content:</p>
-<div class="codehilite"><pre><span></span>ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+<p>Create a file named <code class="codehilite">wpa_supplicant.conf</code> with the following content:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
 country=«your_ISO-3166-1_two-letter_country_code»
 
@@ -664,8 +672,9 @@ network={
     key_mgmt=WPA-PSK
 }
 </pre></div>
+</td></tr></table>
 
-<p>Replace <code>«your_ISO-3166-1_two-letter_country_code»</code> with your <a href="https://www.iso.org/obp/ui/#search">ISO Country Code</a>, <code>«your_SSID»</code> with the SSID of your network and <code>«your_PSK»</code> with the corresponding wifi password.</p>
+<p>Replace <code class="codehilite">«your_ISO-3166-1_two-letter_country_code»</code> with your <a href="https://www.iso.org/obp/ui/#search">ISO Country Code</a>, <code class="codehilite">«your_SSID»</code> with the SSID of your network and <code class="codehilite">«your_PSK»</code> with the corresponding wifi password.</p>
 <h2 id="connect-to-the-raspberry-pi">Connect to the Raspberry Pi<a class="headerlink" href="#connect-to-the-raspberry-pi" title="Permanent link">&para;</a></h2>
 <div class="admonition quote">
 <p class="admonition-title">Source: <a href="https://hackernoon.com/raspberry-pi-headless-install-462ccabd75d0">hackernoon.com</a></p>
@@ -678,8 +687,8 @@ Password:  raspberry
 <div class="codehilite"><pre><span></span><span class="gp">$</span> ssh pi@raspberrypi
 </pre></div>
 
-<p>If this does not initialize a connection, find out the IP either by running <code>nmap -p 22 «subnet mask»</code> on your local subnet or finding the device in the router's DHCP table.</p>
-<p>You can now change the host name if you want. Replace <code>raspberrypi</code> by the new name in the following two files and reboot.</p>
+<p>If this does not initialize a connection, find out the IP either by running <code class="codehilite">nmap -p 22 «subnet mask»</code> on your local subnet or finding the device in the router's DHCP table.</p>
+<p>You can now change the host name if you want. Replace <code class="codehilite">raspberrypi</code> by the new name in the following two files and reboot.</p>
 <div class="codehilite"><pre><span></span><span class="gp">#</span> vim /etc/hostname
 <span class="gp">#</span> vim /etc/hosts
 <span class="gp">#</span> reboot

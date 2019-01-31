@@ -741,7 +741,7 @@
 <div class="admonition quote">
 <p class="admonition-title">Source: <a href="https://gist.github.com/naomik/5428370">gist.github.com</a></p>
 </div>
-<p>In this guide, I'm going to setup a keyfile or password-encrypted LUKS partition. I will be using a single, max-size partition on a single physical device. The mountpoint can be determined by running <code>lsblk</code>.</p>
+<p>In this guide, I'm going to setup a keyfile or password-encrypted LUKS partition. I will be using a single, max-size partition on a single physical device. The mountpoint can be determined by running <code class="codehilite">lsblk</code>.</p>
 <h2 id="partition-the-physical-device">Partition the physical device<a class="headerlink" href="#partition-the-physical-device" title="Permanent link">&para;</a></h2>
 <div class="codehilite"><pre><span></span><span class="gp">#</span> parted /dev/sdX
 <span class="go">(parted) mklabel gpt</span>
@@ -750,13 +750,13 @@
 </pre></div>
 
 <h2 id="create-the-key-file-optional">Create the key file (optional)<a class="headerlink" href="#create-the-key-file-optional" title="Permanent link">&para;</a></h2>
-<p>Before we go further, let's create our 2048-bit key file first. I'm going to install it <code>/root/backup.key</code></p>
+<p>Before we go further, let's create our 2048-bit key file first. I'm going to install it <code class="codehilite">/root/backup.key</code></p>
 <div class="codehilite"><pre><span></span><span class="gp">#</span> dd <span class="k">if</span><span class="o">=</span>/dev/urandom <span class="nv">of</span><span class="o">=</span>/root/backup.key <span class="nv">bs</span><span class="o">=</span><span class="m">1024</span> <span class="nv">count</span><span class="o">=</span><span class="m">2</span>
 <span class="gp">#</span> chmod <span class="m">0400</span> /root/backup.key
 </pre></div>
 
 <h2 id="create-luks-partition">Create LUKS partition<a class="headerlink" href="#create-luks-partition" title="Permanent link">&para;</a></h2>
-<p>In my case, <code>/dev/sdX1</code> was created by <code>parted</code>. Create the LUKS partition with our key file or password now.</p>
+<p>In my case, <code class="codehilite">/dev/sdX1</code> was created by <code class="codehilite">parted</code>. Create the LUKS partition with our key file or password now.</p>
 <h4 id="with-key-file">With key file<a class="headerlink" href="#with-key-file" title="Permanent link">&para;</a></h4>
 <dl>
 <dd>
@@ -778,11 +778,11 @@
 <h4 id="with-keyfile">With keyfile<a class="headerlink" href="#with-keyfile" title="Permanent link">&para;</a></h4>
 <dl>
 <dd>
-<p>Before we can start using our LUKS partition, we have to size it properly and format it first. In order to do that, we will first use <code>luksOpen</code> which creates an IO backing device that allows us to interact with the partition. I'll call my device <code>backup</code>; you can call yours whatever you want.</p>
+<p>Before we can start using our LUKS partition, we have to size it properly and format it first. In order to do that, we will first use <code class="codehilite">luksOpen</code> which creates an IO backing device that allows us to interact with the partition. I'll call my device <code class="codehilite">backup</code>; you can call yours whatever you want.</p>
 <div class="codehilite"><pre><span></span><span class="gp">#</span> cryptsetup luksOpen /dev/sdX1 backup --key-file<span class="o">=</span>/root/backup.key
 </pre></div>
 
-<p>The LUKS mapping device will now be available at <code>/dev/mapper/backup</code></p>
+<p>The LUKS mapping device will now be available at <code class="codehilite">/dev/mapper/backup</code></p>
 </dd>
 </dl>
 <h4 id="with-password_1">With password<a class="headerlink" href="#with-password_1" title="Permanent link">&para;</a></h4>
@@ -795,17 +795,17 @@
 </dd>
 </dl>
 <h2 id="size-the-luks-partition">Size the LUKS partition<a class="headerlink" href="#size-the-luks-partition" title="Permanent link">&para;</a></h2>
-<p>When using <code>resize</code> without any additional vars, it will use the max size of the underlying partition.</p>
+<p>When using <code class="codehilite">resize</code> without any additional vars, it will use the max size of the underlying partition.</p>
 <div class="codehilite"><pre><span></span><span class="gp">#</span> cryptsetup resize backup
 </pre></div>
 
 <h2 id="format-the-luks-partition">Format the LUKS partition<a class="headerlink" href="#format-the-luks-partition" title="Permanent link">&para;</a></h2>
-<p>I'm going to use <code>ext4</code>; you can use whatever you want.</p>
+<p>I'm going to use <code class="codehilite">ext4</code>; you can use whatever you want.</p>
 <div class="codehilite"><pre><span></span><span class="gp">#</span> mkfs.ext4 /dev/mapper/backup
 </pre></div>
 
 <h2 id="create-a-mount-point">Create a mount point<a class="headerlink" href="#create-a-mount-point" title="Permanent link">&para;</a></h2>
-<p>I'll create a mount point at <code>/backup</code></p>
+<p>I'll create a mount point at <code class="codehilite">/backup</code></p>
 <div class="codehilite"><pre><span></span><span class="gp">#</span> mkdir -p /backup
 <span class="gp">#</span> chmod <span class="m">755</span> /backup
 </pre></div>
@@ -828,11 +828,11 @@
 <h4 id="with-keyfile_1">With keyfile<a class="headerlink" href="#with-keyfile_1" title="Permanent link">&para;</a></h4>
 <dl>
 <dd>
-<p>To avoid the hassle of mounting are encrypted volume manually, we can set it up such that it automounts using the specified key file. First you have to get the <code>UUID</code> for your partition.</p>
+<p>To avoid the hassle of mounting are encrypted volume manually, we can set it up such that it automounts using the specified key file. First you have to get the <code class="codehilite">UUID</code> for your partition.</p>
 <div class="codehilite"><pre><span></span><span class="gp">$</span> ls -l /dev/disk/by-uuid
 </pre></div>
 
-<p>Find the UUID that links to your disk. It has the format <code>xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</code>.</p>
+<p>Find the UUID that links to your disk. It has the format <code class="codehilite">xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</code>.</p>
 <div class="codehilite"><pre><span></span><span class="gp">#</span> <span class="nb">export</span> <span class="nv">UUID</span><span class="o">=</span><span class="s2">&quot;xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;</span>
 <span class="gp">#</span> <span class="nb">echo</span> <span class="s2">&quot;backup UUID=</span><span class="si">${</span><span class="nv">UUID</span><span class="si">}</span><span class="s2"> /root/backup.key luks&quot;</span> &gt;&gt; /etc/crypttab
 </pre></div>
