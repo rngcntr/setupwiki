@@ -697,6 +697,16 @@
 <div class="codehilite"><pre><span></span>command=&quot;borg serve --restrict-to-path ~/repo/«client» --append-only&quot; ssh-ed25519 «key_fingerprint» «user»@«client»
 </pre></div>
 
+<p>Finally, we can now disable normal login for the user borg.</p>
+<div class="codehilite"><pre><span></span><span class="gp">#</span> passwd -l borg
+</pre></div>
+
+<div class="admonition info">
+<p class="admonition-title">Login as borg via root</p>
+<p>After doing this, we will still be able to log into our borg account by running <code>su - borg</code> as root.
+<div class="codehilite"><pre><span></span><span class="gp">#</span> su - borg
+</pre></div></p>
+</div>
 <h2 id="create-a-borg-repository">Create a borg repository<a class="headerlink" href="#create-a-borg-repository" title="Permanent link">&para;</a></h2>
 <p>As <code>borg</code> on <code>«server»</code>:
 <div class="codehilite"><pre><span></span><span class="gp">$</span> mkdir -p ~/repo/«client»
