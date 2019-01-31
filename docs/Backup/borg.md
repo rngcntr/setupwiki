@@ -75,6 +75,18 @@ In this case we will not be able to run `borg prune` remotely anymore. To delete
 command="borg serve --restrict-to-path ~/repo/«client» --append-only" ssh-ed25519 «key_fingerprint» «user»@«client»
 ```
 
+Finally, we can now disable normal login for the user borg.
+
+```console
+# passwd -l borg
+```
+
+!!! info "Login as borg via root"
+    After doing this, we will still be able to log into our borg account by running `su - borg` as root.
+    ```console
+    # su - borg
+    ```
+
 ## Create a borg repository
 
 As `borg` on `«server»`:
