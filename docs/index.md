@@ -4,18 +4,18 @@ This is a collection of various setup guides. All instrucions are based on my ow
 
 ## Backup
 
-[Borg Backup](Backup/borg.md)
+[Borg Backup](Backup/Borg.md)
 
 ## .Dotfiles
 
-[Dotfile Setup](Dotfiles/setup.md)
+[Dotfile Setup](Dotfiles/Setup.md)
 
 ## Disk Encryption
 
-[LUKS](Full_Disk_Encryption/luks_crypt.md)
+[LUKS](Full_Disk_Encryption/LUKS_Crypt.md)
 
 ## Raspberry Pi
 
-[Setup for headless systems](Raspberry_Pi/setup_sdcard_headless.md)
+[Setup for headless systems](Raspberry_Pi/Headless_Setup.md)
 
-[OpenVPN Server](Raspberry_Pi/openvpn.md)
+[OpenVPN Server](Raspberry_Pi/OpenVPN.md)
