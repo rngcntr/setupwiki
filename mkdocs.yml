@@ -7,6 +7,17 @@ theme:
     logo:
         icon: 'receipt'
     favicon: 'assets/images/favicon.ico'
+pages:
+    - Main Page: 'index.md'
+    - Backup:
+        - 'Borg': 'Backup/Borg.md'
+    - Dotfiles:
+        - 'Setup': 'Dotfiles/Setup.md'
+    - Full Disk Encryption:
+        - 'LUKS': 'Full_Disk_Encryption/LUKS_Crypt.md'
+    - Raspberry Pi:
+        - 'Headless Setup': 'Raspberry_Pi/Headless_Setup.md'
+        - 'OpenVPN': 'Raspberry_Pi/OpenVPN.md'
 repo_name: 'rngcntr/setupwiki'
 repo_url: 'https://github.com/rngcntr/setupwiki'
 edit_uri: ''
