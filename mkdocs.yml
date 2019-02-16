@@ -21,6 +21,7 @@ pages:
 repo_name: 'rngcntr/setupwiki'
 repo_url: 'https://github.com/rngcntr/setupwiki'
 edit_uri: ''
+use_directory_urls: False
 extra:
     social:
         - type: 'github'
