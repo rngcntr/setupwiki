@@ -1,6 +1,6 @@
 # Setup Wiki
 
-This is a collection of various setup guides. All instrucions are based on my own experience or the experience of others and on procedures that have worked well on my own system. I try to keep the instructions general and as independent of the system as possible. None of the entries claims completeness or functionality.
+This is a collection of various setup guides. All instructions are based on my own experience or the experience of others and on procedures that have worked well on my own system. I try to keep the instructions general and as independent of the system as possible. None of the entries claims completeness or functionality.
 
 ## Backup
 
