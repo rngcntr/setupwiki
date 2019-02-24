@@ -19,3 +19,7 @@ This is a collection of various setup guides. All instructions are based on my o
 [Setup for headless systems](Raspberry_Pi/Headless_Setup.md)
 
 [OpenVPN Server](Raspberry_Pi/OpenVPN.md)
+
+## Arduino
+
+[Troubleshooting](Arduino/Troubleshooting.md)

@@ -18,6 +18,8 @@ pages:
     - Raspberry Pi:
         - 'Headless Setup': 'Raspberry_Pi/Headless_Setup.md'
         - 'OpenVPN': 'Raspberry_Pi/OpenVPN.md'
+    - Arduino:
+        - 'Troubleshooting': 'Arduino/Troubleshooting.md'
 repo_name: 'rngcntr/setupwiki'
 repo_url: 'https://github.com/rngcntr/setupwiki'
 edit_uri: ''
