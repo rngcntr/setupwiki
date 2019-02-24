@@ -36,7 +36,7 @@
     
     
       
-        <title>Setup - Setup Wiki</title>
+        <title>Troubleshooting - Setup Wiki</title>
       
     
     
@@ -102,7 +102,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#dotfiles" tabindex="1" class="md-skip">
+      <a href="#arduino-troubleshooting" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -128,7 +128,7 @@
                 Setup Wiki
               </span>
               <span class="md-header-nav__topic">
-                Setup
+                Troubleshooting
               </span>
             
           
@@ -291,12 +291,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
     <label class="md-nav__link" for="nav-3">
       Dotfiles
@@ -312,20 +310,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-    <a href="Setup.html" title="Setup" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../Dotfiles/Setup.html" title="Setup" class="md-nav__link">
       Setup
     </a>
-    
   </li>
 
         
@@ -422,10 +411,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
     
     <label class="md-nav__link" for="nav-6">
       Arduino
@@ -441,11 +432,49 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../Arduino/Troubleshooting.html" title="Troubleshooting" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Troubleshooting
+      </label>
+    
+    <a href="Troubleshooting.html" title="Troubleshooting" class="md-nav__link md-nav__link--active">
       Troubleshooting
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#libtinfoso5" title="libtinfo.so.5" class="md-nav__link">
+    libtinfo.so.5
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -471,6 +500,22 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#libtinfoso5" title="libtinfo.so.5" class="md-nav__link">
+    libtinfo.so.5
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -482,7 +527,22 @@
               
                 
                 
-                <h1 id="dotfiles">Dotfiles<a class="headerlink" href="#dotfiles" title="Permanent link">&para;</a></h1>
+                <h1 id="arduino-troubleshooting">Arduino Troubleshooting<a class="headerlink" href="#arduino-troubleshooting" title="Permanent link">&para;</a></h1>
+<h2 id="libtinfoso5">libtinfo.so.5<a class="headerlink" href="#libtinfoso5" title="Permanent link">&para;</a></h2>
+<div class="admonition quote">
+<p class="admonition-title">Source: <a href="https://github.com/stevearc/vim-arduino/issues/2">github.com</a>, <a href="https://www.dinotools.de/2015/03/15/problem-mit-arduino-ide-unter-arch-linux-beheben/">www.dinotools.de</a></p>
+</div>
+<p>It seems to be a known issue with Arduino software on Arch Linux: When trying to load any program to a microcontroller, the following error emerges:</p>
+<div class="codehilite"><pre><span></span><span class="go">error while loading shared libraries: libtinfo.so.5: cannot open shared object file: No such file or directory</span>
+</pre></div>
+
+<p>According to <a href="https://www.dinotools.de/2015/03/15/problem-mit-arduino-ide-unter-arch-linux-beheben/">www.dinotools.de</a>, the reason is that <code class="codehilite">libtinfo.so.5</code> is not included in <code class="codehilite">libcurses</code> packages on Arch distributions.
+Therefore Arduino cannot find the library where it expects it to be.
+A simple (but dirty) approach to solve the problem is to create a link to <code class="codehilite">libtinfo.so.5</code> which exists on my system.</p>
+<div class="codehilite"><pre><span></span><span class="gp">#</span> ln -s /lib/libtinfo.so.6 /lib/libtinfo.so.5
+</pre></div>
+
+<p>Others suggest linking to various <code class="codehilite">libncurses.so</code> files which I haven't tested yet.</p>
                 
                   
                 
@@ -503,7 +563,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../Backup/Borg.html" title="Borg" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../Raspberry_Pi/OpenVPN.html" title="OpenVPN" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -512,25 +572,11 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Borg
+                OpenVPN
               </span>
             </div>
           </a>
         
-        
-          <a href="../Full_Disk_Encryption/LUKS_Crypt.html" title="LUKS" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                LUKS
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
         
       </nav>
     </div>
