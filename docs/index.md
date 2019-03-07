@@ -6,20 +6,20 @@ This is a collection of various setup guides. All instructions are based on my o
 
 [Borg Backup](Backup/Borg.md)
 
-## .Dotfiles
-
-[Dotfile Setup](Dotfiles/Setup.md)
-
-## Disk Encryption
-
-[LUKS](Full_Disk_Encryption/LUKS_Crypt.md)
-
 ## Raspberry Pi
 
 [Setup for headless systems](Raspberry_Pi/Headless_Setup.md)
 
 [OpenVPN Server](Raspberry_Pi/OpenVPN.md)
 
-## Arduino
+## Troubleshooting
 
-[Troubleshooting](Arduino/Troubleshooting.md)
+[Arduino](Troubleshooting/Arduino.md)
+
+[Manjaro](Troubleshooting/Manjaro.md)
+
+## Miscellaneous
+
+[Dotfiles](Miscellaneous/Dotfiles.md)
+
+[LUKS Disk Encryption](Miscellaneous/LUKS_Disk_Encryption.md)

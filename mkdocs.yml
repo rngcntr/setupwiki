@@ -11,15 +11,15 @@ pages:
     - Main Page: 'index.md'
     - Backup:
         - 'Borg': 'Backup/Borg.md'
-    - Dotfiles:
-        - 'Setup': 'Dotfiles/Setup.md'
-    - Full Disk Encryption:
-        - 'LUKS': 'Full_Disk_Encryption/LUKS_Crypt.md'
     - Raspberry Pi:
         - 'Headless Setup': 'Raspberry_Pi/Headless_Setup.md'
         - 'OpenVPN': 'Raspberry_Pi/OpenVPN.md'
-    - Arduino:
-        - 'Troubleshooting': 'Arduino/Troubleshooting.md'
+    - Troubleshooting:
+        - 'Manjaro': 'Troubleshooting/Manjaro.md'
+        - 'Arduino': 'Troubleshooting/Arduino.md'
+    - Miscellaneous:
+        - 'Dotfiles': 'Miscellaneous/Dotfiles.md'
+        - 'LUKS Disk Encryption': 'Miscellaneous/LUKS_Disk_Encryption.md'
 repo_name: 'rngcntr/setupwiki'
 repo_url: 'https://github.com/rngcntr/setupwiki'
 edit_uri: ''
@@ -35,7 +35,7 @@ markdown_extensions:
     - markdown.extensions.admonition
     - codehilite
     - markdown.extensions.codehilite:
-        guess_lang: false
+        linenums: true
     - markdown.extensions.def_list
     - markdown.extensions.footnotes
     - markdown.extensions.meta
