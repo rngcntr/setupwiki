@@ -7,7 +7,7 @@ theme:
     logo:
         icon: 'receipt'
     favicon: 'assets/images/favicon.ico'
-pages:
+nav:
     - Main Page: 'index.md'
     - Backup:
         - 'Borg': 'Backup/Borg.md'
