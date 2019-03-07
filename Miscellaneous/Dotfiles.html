@@ -633,13 +633,42 @@
 <p>Instead of having having your home directory clustered with various dotfiles, we want to keep all of our relevant dotfiles bundled inside a single <code class="codehilite"><span class="na">.dotfiles</span></code> direcory. To make sure that programs can find their files in the expected location, we use symbolic links.</p>
 <h2 id="included-configurations">Included Configurations<a class="headerlink" href="#included-configurations" title="Permanent link">&para;</a></h2>
 <p>The following configurations are currently included in this repository:</p>
-<ul>
-<li><a href="#vim">vim</a> (../blob/master/.vimrc)</li>
-<li><a href="#zsh">zsh</a> (../blob/master/.zshrc, ../blob/master/.oh-my-zsh)</li>
-<li><a href="#x">X</a> (../blob/master/.Xdefaults, ../blob/master/.Xdefaults.d)</li>
-<li><a href="#git">git</a> (../blob/master/.gitconfig, ../blob/master/.gitconfig.local)</li>
-<li><a href="#conky">conky</a> (../blob/master/.config/conky)</li>
-</ul>
+<table style="white-space: nowrap;">
+  <thead>
+    <tr>
+      <th colspan="1">Program</td>
+      <th colspan="2">Files</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href=#vim>vim</a></td>
+      <td><a href="https://github.com/rngcntr/.dotfiles/blob/master/.vimrc">.vimrc</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><a href=#zsh>zsh</a></td>
+      <td><a href="https://github.com/rngcntr/.dotfiles/blob/master/.zshrc">.zshrc</a></td>
+      <td><a href="https://github.com/rngcntr/.dotfiles/blob/master/.oh-my-zsh">.oh-my-zsh</a></td>
+    </tr>
+    <tr>
+      <td><a href=#X>X</a></td>
+      <td><a href="https://github.com/rngcntr/.dotfiles/blob/master/.Xdefaults">.Xdefaults</a></td>
+      <td><a href="https://github.com/rngcntr/.dotfiles/blob/master/.Xdefaults.d">.Xdefaults.d</a></td>
+    </tr>
+    <tr>
+      <td><a href=#git>git</a></td>
+      <td><a href="https://github.com/rngcntr/.dotfiles/blob/master/.gitconfig">.gitconfig</a></td>
+      <td><a href="https://github.com/rngcntr/.dotfiles/blob/master/.gitconfig.local">.gitconfig.local</a></td>
+    </tr>
+    <tr>
+      <td><a href=#conky>conky</a></td>
+      <td><a href="https://github.com/rngcntr/.dotfiles/blob/master/.config/conky">.config/conky</a></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
 <h2 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
@@ -651,17 +680,17 @@
 </li>
 <li>
 <p>Initialize the submodules (optional)</p>
+<p>Some of the contained configurations are forks of existing configuration repositories. In order to use these, you have to clone the required submodules.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> ~/.dotfiles
+<span class="gp">$</span> git submodule init
+<span class="gp">$</span> git submodule update
+</pre></div>
+</td></tr></table>
+
 </li>
 </ol>
-<p>Some of the contained configurations are forks of existing configuration repositories. In order to use these, you have to clone the required submodules.</p>
-<div class="codehilite"><pre><span></span>``` console
-$ cd ~/.dotfiles
-$ git submodule init
-$ git submodule update
-```
-</pre></div>
-
-
 <h2 id="detailed-setup">Detailed Setup<a class="headerlink" href="#detailed-setup" title="Permanent link">&para;</a></h2>
 <h3 id="vim">vim<a class="headerlink" href="#vim" title="Permanent link">&para;</a></h3>
 <ol>
@@ -752,9 +781,13 @@ $ git submodule update
 
 </li>
 <li>
-<p>Enter all of your personal settings into the .gitconfig.local file. <strong>Make sure you never commit this file for privacy reasons.</strong></p>
+<p>Enter all of your personal settings into the .gitconfig.local file. </p>
 </li>
 </ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Make sure you never commit this file for privacy reasons</p>
+</div>
 <h3 id="conky">conky<a class="headerlink" href="#conky" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Important Note</p>
