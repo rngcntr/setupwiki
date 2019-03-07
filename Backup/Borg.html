@@ -691,75 +691,96 @@
 <p class="admonition-title">Source: <a href="https://www.digitalocean.com/community/tutorials/how-to-partition-and-format-storage-devices-in-linux">www.digitalocean.com</a></p>
 </div>
 <p>Find the device name of your hard drive first using <code class="codehilite">lsblk</code> or <code class="codehilite">parted -l</code>. The name is in the format <code class="codehilite">sdX</code> where <code class="codehilite">X</code> is a lowercase letter. Create a new primary partition on this device using <code class="codehilite">parted</code>. When asked, confirm with <code class="codehilite">Yes</code>.</p>
-<div class="codehilite"><pre><span></span><span class="gp">#</span> parted /dev/sdX/
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">#</span> parted /dev/sdX/
 <span class="go">(parted) mklabel gpt</span>
 <span class="go">(parted) mkpart primary 1 -1</span>
 <span class="go">(parted) quit</span>
 </pre></div>
+</td></tr></table>
 
 <p>Use <code class="codehilite">mkfs.ext4</code> to format the partition as ext4. Optionally, add a label by passing <code class="codehilite">-L</code> to the command. I use the label <code class="codehilite">backup</code>.</p>
-<div class="codehilite"><pre><span></span><span class="gp">#</span> mkfs.ext4 -L backup /dev/sdX1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">#</span> mkfs.ext4 -L backup /dev/sdX1
 </pre></div>
+</td></tr></table>
 
 <p>This process may take a little while. Verify it's success afterwards by checking <code class="codehilite">lsblk --fs</code>.</p>
 <h3 id="mounting-the-partition-at-boot-time">Mounting the partition at boot time<a class="headerlink" href="#mounting-the-partition-at-boot-time" title="Permanent link">&para;</a></h3>
 <p>In order to mount the filesystem each time our server boots, edit the file <code class="codehilite">/etc/fstab</code>. In this case we add a line referencing the UUID found in <code class="codehilite">lsblk --fs</code> and mount it as ext4 to <code class="codehilite">/mnt/backup</code>.</p>
-<div class="codehilite"><pre><span></span>UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx /mnt/backup    ext4    defaults   0       2
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx /mnt/backup    ext4    defaults   0       2
 </pre></div>
+</td></tr></table>
 
 <p>Now reboot or manually mount the filesystem.</p>
-<div class="codehilite"><pre><span></span><span class="gp">#</span> /mnt/backup
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">#</span> /mnt/backup
 <span class="gp">#</span> mount -a
 </pre></div>
+</td></tr></table>
 
 <h2 id="create-a-backup-user-and-set-its-home-directory">Create a backup user and set it's home directory<a class="headerlink" href="#create-a-backup-user-and-set-its-home-directory" title="Permanent link">&para;</a></h2>
 <p>Add a user on the server who will have access to borg. Set the home directory to the backup partition.</p>
-<div class="codehilite"><pre><span></span><span class="gp">#</span> useradd -m borg
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">#</span> useradd -m borg
 <span class="gp">#</span> passwd borg
 <span class="gp">#</span> usermod -d /mnt/backup/borg -m borg
 </pre></div>
+</td></tr></table>
 
 <h2 id="allow-ssh-login-as-borg-user">Allow ssh login as borg user<a class="headerlink" href="#allow-ssh-login-as-borg-user" title="Permanent link">&para;</a></h2>
 <p>On each client device, create a new ssh identity for borg and copy the public key to the server.</p>
-<div class="codehilite"><pre><span></span><span class="gp">$</span> ssh-keygen -t ed25519
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">$</span> ssh-keygen -t ed25519
 <span class="gp">$</span> ssh-copy-id -i «path/to/key» borg@«server»
 </pre></div>
+</td></tr></table>
 
 <h2 id="restrict-borg-user-access">Restrict borg user access<a class="headerlink" href="#restrict-borg-user-access" title="Permanent link">&para;</a></h2>
 <p>In case a single machine is compromised, an attacker will have acces to the borg server and will be able to delete all backups and control the server. To avoid this, we can restrict ssh access to only allow the borg command. Therefore, we log in as borg on our server and edit the file <code class="codehilite"><span class="na">.ssh</span><span class="err">/</span><span class="no">authorized_keys</span></code>. For each client, find the corresponding line and expand it by specifying <code class="codehilite">command=&quot;...&quot;</code> as seen below:</p>
-<div class="codehilite"><pre><span></span>command=&quot;borg serve --restrict-to-path ~/repo/«client»&quot; ssh-ed25519 «key_fingerprint» «user»@«client»
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>command=&quot;borg serve --restrict-to-path ~/repo/«client»&quot; ssh-ed25519 «key_fingerprint» «user»@«client»
 </pre></div>
+</td></tr></table>
 
 <p>Note that an attacker is still able to run <code class="codehilite">borg prune</code> and thereby delete existing backups. In order to avoid this, we can additionaly specify the <code class="codehilite">--append-only</code> flag.</p>
 <p>In this case we will not be able to run <code class="codehilite">borg prune</code> remotely anymore. To delete old backups, we will need physical access to the machine.</p>
-<div class="codehilite"><pre><span></span>command=&quot;borg serve --restrict-to-path ~/repo/«client» --append-only&quot; ssh-ed25519 «key_fingerprint» «user»@«client»
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>command=&quot;borg serve --restrict-to-path ~/repo/«client» --append-only&quot; ssh-ed25519 «key_fingerprint» «user»@«client»
 </pre></div>
+</td></tr></table>
 
 <p>Finally, we can now disable normal login for the user borg.</p>
-<div class="codehilite"><pre><span></span><span class="gp">#</span> passwd -l borg
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">#</span> passwd -l borg
 </pre></div>
+</td></tr></table>
 
 <div class="admonition info">
 <p class="admonition-title">Login as borg via root</p>
 <p>After doing this, we will still be able to log into our borg account by running <code class="codehilite">su - borg</code> as root.
-<div class="codehilite"><pre><span></span><span class="gp">#</span> su - borg
-</pre></div></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">#</span> su - borg
+</pre></div>
+</td></tr></table></p>
 </div>
 <h2 id="create-a-borg-repository">Create a borg repository<a class="headerlink" href="#create-a-borg-repository" title="Permanent link">&para;</a></h2>
 <p>As <code class="codehilite">borg</code> on <code class="codehilite">«server»</code>:
-<div class="codehilite"><pre><span></span><span class="gp">$</span> mkdir -p ~/repo/«client»
-</pre></div></p>
-<p>On client:</p>
-<div class="codehilite"><pre><span></span><span class="gp">$</span> borg init --encryption<span class="o">=</span>repokey borg@«server»:~/repo/«client»
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">$</span> mkdir -p ~/repo/«client»
 </pre></div>
+</td></tr></table></p>
+<p>On client:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">$</span> borg init --encryption<span class="o">=</span>repokey borg@«server»:~/repo/«client»
+</pre></div>
+</td></tr></table>
 
 <p>Export the repository key and store it in a safe location (e.g. password safe)</p>
-<div class="codehilite"><pre><span></span><span class="gp">$</span> borg key <span class="nb">export</span> borg@«server»:~/repo/«client» ./borg-key-«client»
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">$</span> borg key <span class="nb">export</span> borg@«server»:~/repo/«client» ./borg-key-«client»
 </pre></div>
+</td></tr></table>
 
 <h2 id="backup-a-single-file-or-directory">Backup a single file or directory<a class="headerlink" href="#backup-a-single-file-or-directory" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="gp">#</span> borg create -s --progress borg@«server»:~/repo/«client»::«archive» /path/to/file
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">#</span> borg create -s --progress borg@«server»:~/repo/«client»::«archive» /path/to/file
 </pre></div>
+</td></tr></table>
 
 <h2 id="backup-an-entire-filesystem">Backup an entire filesystem<a class="headerlink" href="#backup-an-entire-filesystem" title="Permanent link">&para;</a></h2>
 <div class="admonition quote">
@@ -784,7 +805,17 @@
 </pre></div>
 </td></tr></table>
 
-<div class="codehilite"><pre><span></span><span class="gp">#</span> borg create --progress --verbose --stats --exclude-caches --exclude <span class="s1">&#39;/dev/*&#39;</span> <span class="se">\</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">#</span> borg create --progress --verbose --stats --exclude-caches --exclude <span class="s1">&#39;/dev/*&#39;</span> <span class="se">\</span>
     --exclude <span class="s1">&#39;/lost+found/*&#39;</span>       <span class="se">\</span>
     --exclude <span class="s1">&#39;/mnt/*&#39;</span>              <span class="se">\</span>
     --exclude <span class="s1">&#39;/media/*&#39;</span>            <span class="se">\</span>
@@ -796,20 +827,28 @@
     --exclude re:/<span class="se">\\</span>.ccache/        <span class="se">\</span>
     borg@«server»:~/repo/«client»::«client»-«date» /
 </pre></div>
+</td></tr></table>
 
 <h2 id="restore-a-backup">Restore a backup<a class="headerlink" href="#restore-a-backup" title="Permanent link">&para;</a></h2>
 <h2 id="delete-an-archive">Delete an archive<a class="headerlink" href="#delete-an-archive" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="gp">#</span> borg delete borg@«server»:~/repo/«client»::«archive»
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">#</span> borg delete borg@«server»:~/repo/«client»::«archive»
 </pre></div>
+</td></tr></table>
 
 <h2 id="delete-old-archives">Delete old archives<a class="headerlink" href="#delete-old-archives" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="gp">#</span> borg prune --verbose --stats --progress --list <span class="se">\</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">#</span> borg prune --verbose --stats --progress --list <span class="se">\</span>
     --keep-daily<span class="o">=</span><span class="m">14</span>                 <span class="se">\</span>
     --keep-weekly<span class="o">=</span><span class="m">8</span>                 <span class="se">\</span>
     --keep-monthly<span class="o">=</span><span class="m">12</span>               <span class="se">\</span>
     --keep-yearly<span class="o">=</span><span class="m">10</span>                <span class="se">\</span>
     borg@«server»:~/repo/«client»
 </pre></div>
+</td></tr></table>
 
 <h2 id="automating-daily-backup">Automating daily backup<a class="headerlink" href="#automating-daily-backup" title="Permanent link">&para;</a></h2>
 <div class="admonition quote">

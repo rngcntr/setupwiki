@@ -549,25 +549,35 @@
 </div>
 <h2 id="create-an-openvpn-user">Create an openvpn user<a class="headerlink" href="#create-an-openvpn-user" title="Permanent link">&para;</a></h2>
 <p>To avoid conflicts with other users, create a new user for the VPN service and set a password for this user. In my case the user is called «openvpn».
-<div class="codehilite"><pre><span></span><span class="gp">#</span> adduser «openvpn»
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">#</span> adduser «openvpn»
 <span class="gp">#</span> passwd «openvpn»
 <span class="gp">#</span> sudo usermod -a -G sudo «openvpn»
 <span class="gp">#</span> mkdir /home/«openvpn»
 <span class="gp">#</span> chown /home/openvpn «openvpn»
 <span class="gp">#</span> chgrp /home/openvpn «openvpn»
-</pre></div></p>
-<p>Log in as «openvpn».</p>
-<div class="codehilite"><pre><span></span><span class="gp">$</span> su - «openvpn»
 </pre></div>
+</td></tr></table></p>
+<p>Log in as «openvpn».</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">$</span> su - «openvpn»
+</pre></div>
+</td></tr></table>
 
 <h2 id="run-the-pivpn-install-script">Run the PiVPN install script<a class="headerlink" href="#run-the-pivpn-install-script" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -L install.pivpn.io &gt; pivpn.sh
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">$</span> curl -L install.pivpn.io &gt; pivpn.sh
 <span class="gp">$</span> chmod +x pivpn.sh
 </pre></div>
+</td></tr></table>
 
 <p>Once you are sure the script is not harmful in any way, run the installation script.</p>
-<div class="codehilite"><pre><span></span>$ ./pivpn.sh
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>$ ./pivpn.sh
 </pre></div>
+</td></tr></table>
 
 <ol>
 <li>Confirm the current network settings and make sure the shown IP address (eg. 192.168.2.110) is always assigned to this device by the router.</li>
@@ -580,8 +590,9 @@
 </ol>
 <h2 id="add-clients">Add clients<a class="headerlink" href="#add-clients" title="Permanent link">&para;</a></h2>
 <p>To generate a client configuration, use:</p>
-<div class="codehilite"><pre><span></span><span class="gp">$</span> pivpn add
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">$</span> pivpn add
 </pre></div>
+</td></tr></table>
 
 <p>Select a different username and password for each client. Copy the resulting <code class="codehilite">ovpn</code> file to your client device via scp and use it in your OpenVPN client.</p>
                 

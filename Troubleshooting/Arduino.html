@@ -521,14 +521,16 @@
 <p class="admonition-title">Source: <a href="https://github.com/stevearc/vim-arduino/issues/2">github.com</a>, <a href="https://www.dinotools.de/2015/03/15/problem-mit-arduino-ide-unter-arch-linux-beheben/">www.dinotools.de</a></p>
 </div>
 <p>It seems to be a known issue with Arduino software on Arch Linux: When trying to load any program to a microcontroller, the following error emerges:</p>
-<div class="codehilite"><pre><span></span><span class="go">error while loading shared libraries: libtinfo.so.5: cannot open shared object file: No such file or directory</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="go">error while loading shared libraries: libtinfo.so.5: cannot open shared object file: No such file or directory</span>
 </pre></div>
+</td></tr></table>
 
 <p>According to <a href="https://www.dinotools.de/2015/03/15/problem-mit-arduino-ide-unter-arch-linux-beheben/">www.dinotools.de</a>, the reason is that <code class="codehilite">libtinfo.so.5</code> is not included in <code class="codehilite">libcurses</code> packages on Arch distributions.
 Therefore Arduino cannot find the library where it expects it to be.
 A simple (but dirty) approach to solve the problem is to create a link to <code class="codehilite">libtinfo.so.5</code> which exists on my system.</p>
-<div class="codehilite"><pre><span></span><span class="gp">#</span> ln -s /lib/libtinfo.so.6 /lib/libtinfo.so.5
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">#</span> ln -s /lib/libtinfo.so.6 /lib/libtinfo.so.5
 </pre></div>
+</td></tr></table>
 
 <p>Others suggest linking to various <code class="codehilite">libncurses.so</code> files which I haven't tested yet.</p>
                 
