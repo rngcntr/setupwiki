@@ -418,9 +418,93 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Dotfiles
+      </label>
+    
     <a href="Dotfiles.html" title="Dotfiles" class="md-nav__link md-nav__link--active">
       Dotfiles
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#included-configurations" title="Included Configurations" class="md-nav__link">
+    Included Configurations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" title="Quick Start" class="md-nav__link">
+    Quick Start
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detailed-setup" title="Detailed Setup" class="md-nav__link">
+    Detailed Setup
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vim" title="vim" class="md-nav__link">
+    vim
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zsh" title="zsh" class="md-nav__link">
+    zsh
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x" title="X" class="md-nav__link">
+    X
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git" title="git" class="md-nav__link">
+    git
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conky" title="conky" class="md-nav__link">
+    conky
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -459,6 +543,77 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#included-configurations" title="Included Configurations" class="md-nav__link">
+    Included Configurations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" title="Quick Start" class="md-nav__link">
+    Quick Start
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detailed-setup" title="Detailed Setup" class="md-nav__link">
+    Detailed Setup
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vim" title="vim" class="md-nav__link">
+    vim
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zsh" title="zsh" class="md-nav__link">
+    zsh
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x" title="X" class="md-nav__link">
+    X
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git" title="git" class="md-nav__link">
+    git
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conky" title="conky" class="md-nav__link">
+    conky
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -471,6 +626,178 @@
                 
                 
                 <h1 id="dotfiles">Dotfiles<a class="headerlink" href="#dotfiles" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Source: <a href="https://github.com/rngcntr/.dotfiles">github.com</a></p>
+</div>
+<p>Over on GitHub I maintain a collection of various dotfiles. It is designed to be simple and modular so you can easily pick as many files as you would like to use for your own setup.</p>
+<p>Instead of having having your home directory clustered with various dotfiles, we want to keep all of our relevant dotfiles bundled inside a single <code class="codehilite"><span class="na">.dotfiles</span></code> direcory. To make sure that programs can find their files in the expected location, we use symbolic links.</p>
+<h2 id="included-configurations">Included Configurations<a class="headerlink" href="#included-configurations" title="Permanent link">&para;</a></h2>
+<p>The following configurations are currently included in this repository:</p>
+<ul>
+<li><a href="#vim">vim</a> (../blob/master/.vimrc)</li>
+<li><a href="#zsh">zsh</a> (../blob/master/.zshrc, ../blob/master/.oh-my-zsh)</li>
+<li><a href="#x">X</a> (../blob/master/.Xdefaults, ../blob/master/.Xdefaults.d)</li>
+<li><a href="#git">git</a> (../blob/master/.gitconfig, ../blob/master/.gitconfig.local)</li>
+<li><a href="#conky">conky</a> (../blob/master/.config/conky)</li>
+</ul>
+<h2 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>Clone the repository.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">$</span> git clone https://github.com/rngcntr/.dotfiles.git ~/.dotfiles
+</pre></div>
+</td></tr></table>
+
+</li>
+<li>
+<p>Initialize the submodules (optional)</p>
+</li>
+</ol>
+<p>Some of the contained configurations are forks of existing configuration repositories. In order to use these, you have to clone the required submodules.</p>
+<div class="codehilite"><pre><span></span>``` console
+$ cd ~/.dotfiles
+$ git submodule init
+$ git submodule update
+```
+</pre></div>
+
+
+<h2 id="detailed-setup">Detailed Setup<a class="headerlink" href="#detailed-setup" title="Permanent link">&para;</a></h2>
+<h3 id="vim">vim<a class="headerlink" href="#vim" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Follow step 1 of <a href="#quick-start">Quick Start</a> (clone the repository)</p>
+</li>
+<li>
+<p>Install <a href="https://github.com/VundleVim/Vundle.vim">Vundle</a></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">$</span> git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+</pre></div>
+</td></tr></table>
+
+</li>
+<li>
+<p>Create the symlink for <code class="codehilite"><span class="na">.vimrc</span></code></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">$</span> ln -s ~/.dotfiles/.vimrc ~/.vimrc
+</pre></div>
+</td></tr></table>
+
+</li>
+<li>
+<p>Install the specified vim plugins</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">$</span> vim +PluginInstall +qall
+</pre></div>
+</td></tr></table>
+
+</li>
+</ol>
+<h3 id="zsh">zsh<a class="headerlink" href="#zsh" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Follow steps 1 and 2 of <a href="#quick-start">Quick Start</a> (clone the repository and submodules)</p>
+</li>
+<li>
+<p>Create the symlinks for <code class="codehilite"><span class="na">.zshrc</span></code> and <code class="codehilite"><span class="na">.oh-my-zsh</span></code></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">$</span> ln -s ~/.dotfiles/.zshrc ~/.zshrc
+<span class="gp">$</span> ln -s ~/.dotfiles/.oh-my-zsh ~/.oh-my-zsh
+</pre></div>
+</td></tr></table>
+
+</li>
+<li>
+<p>Install oh-my-zsh</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">$</span> ~/.oh-my-zsh/tools/install.sh
+</pre></div>
+</td></tr></table>
+
+</li>
+<li>
+<p>Set zsh as your default shell</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">$</span> chsh -s <span class="k">$(</span>which zsh<span class="k">)</span>
+</pre></div>
+</td></tr></table>
+
+</li>
+<li>
+<p>Log out and back in for the changes to take effect</p>
+</li>
+</ol>
+<h3 id="x">X<a class="headerlink" href="#x" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Follow step 1 of <a href="#quick-start">Quick Start</a> (clone the repository)</p>
+</li>
+<li>
+<p>Create the symlinks for <code class="codehilite"><span class="na">.Xdefaults</span></code> and <code class="codehilite"><span class="na">.Xdefaults.d</span></code></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">$</span> ln -s ~/.dotfiles/.Xdefaults ~/.Xdefaults
+<span class="gp">$</span> ln -s ~/.dotfiles/.Xdefaults.d ~/.Xdefaults.d
+</pre></div>
+</td></tr></table>
+
+</li>
+</ol>
+<h3 id="git">git<a class="headerlink" href="#git" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Follow step 1 of <a href="#quick-start">Quick Start</a> (clone the repository)</p>
+</li>
+<li>
+<p>Create the symlinks for <code class="codehilite"><span class="na">.gitconfig</span></code> and <code class="codehilite"><span class="na">.gitconfig.local</span></code></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">$</span> ln -s ~/.dotfiles/.gitconfig ~/.gitoconfig
+<span class="gp">$</span> ln -s ~/.dotfiles/.gitconfig.local ~/.gitconfig.local
+</pre></div>
+</td></tr></table>
+
+</li>
+<li>
+<p>Enter all of your personal settings into the .gitconfig.local file. <strong>Make sure you never commit this file for privacy reasons.</strong></p>
+</li>
+</ol>
+<h3 id="conky">conky<a class="headerlink" href="#conky" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Important Note</p>
+<p>My conky widgets are heavily personalized and are not expected to work as intended on arbitrary systems. Anyway, feel free to use them as a starting point to create your own conky experience.</p>
+</div>
+<ol>
+<li>
+<p>Follow step 1 of <a href="#quick-start">Quick start</a> (clone the repository)</p>
+</li>
+<li>
+<p>Create the symlink for <code class="codehilite">conky</code></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">$</span> ln -s ~/.dotfiles/.config/conky ~/.config/conky
+</pre></div>
+</td></tr></table>
+
+</li>
+<li>
+<p>Start conky</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gp">$</span> .config/conky/conky-start.sh
+</pre></div>
+</td></tr></table>
+
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Using this setup, conky does not automatically start on boot or login. However, conky can be auto started by creating a desktop entry and placing it in <code class="codehilite">~/.config/autostart</code>. An example desktop entry would look like this:</p>
+<div class="superfences-tabs">
+<input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
+<label for="__tab_1_0">~/.config/autostart/conky.desktop</label>
+<div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">[Desktop Entry]</span>
+<span class="na">Name</span><span class="o">=</span><span class="s">Conky</span>
+<span class="na">Comment</span><span class="o">=</span><span class="s">Autostart conky</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">Application</span>
+<span class="na">Exec</span><span class="o">=</span><span class="s">sh -c &quot;sleep 10; ~/.config/conky/conky-start.sh&quot;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
                 
                   
                 
