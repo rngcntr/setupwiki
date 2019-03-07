@@ -33,9 +33,10 @@ extra:
 markdown_extensions:
     - admonition
     - markdown.extensions.admonition
-    - codehilite
-    - markdown.extensions.codehilite:
+    - codehilite:
         linenums: true
+    - markdown.extensions.codehilite:
+        guess_lang: true
     - markdown.extensions.def_list
     - markdown.extensions.footnotes
     - markdown.extensions.meta
