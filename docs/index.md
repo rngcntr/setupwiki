@@ -12,6 +12,8 @@ This is a collection of various setup guides. All instructions are based on my o
 
 [OpenVPN Server](Raspberry_Pi/OpenVPN.md)
 
+[MariaDB Python_Access](Raspberry_Pi/MariaDB_Python_Access.md)
+
 ## Troubleshooting
 
 [Arduino](Troubleshooting/Arduino.md)
